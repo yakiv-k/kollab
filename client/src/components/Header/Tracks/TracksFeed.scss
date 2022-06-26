@@ -1,0 +1,45 @@
+.tracksfeed {
+    padding: 2rem 1rem;
+  &__title {
+    color: #fff;
+    margin: 0;
+  }
+}
+
+.card {
+  background-color: #fff;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  &:hover {
+    transition: 0.25s;
+    transform: translateY(-0.15rem);
+  }
+
+  &__image {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    // height: 90px;
+    // width: 90px;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 2rem;
+  }
+  &__title {
+    margin: 0;
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
+  &__text {
+    margin: 0;
+    font-size: 0.65rem;
+    color: #05031d;
+  }
+}
