@@ -15,7 +15,6 @@ exports.up = function (knex) {
     table.string("BPM").notNullable();
     table.string("image_url").notNullable();
     table.string("audio_url").notNullable();
-    table.timestamp("timestamp").defaultTo(knex.fn.now());
   });
 };
 
