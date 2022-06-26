@@ -1,21 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import WaveSurfer from "wavesurfer.js";
+import play from "../../../assets/icons/play.svg";
+import pause from "../../../assets/icons/pause.svg";
 
 import "./Waveform.scss";
 
-const formWaveSurferOptions = ref => ({
+const formWaveSurferOptions = (ref) => ({
   container: ref,
   waveColor: "#eee",
-  progressColor: "#7EBCE6",
-  cursorColor: "#7EBCE6",
-  barWidth: 3,
+  progressColor: "#576490",
+  cursorColor: "#576490",
+  barWidth: 1,
   barRadius: 3,
   responsive: true,
-  height: 150,
+  height: 45,
+
   // If true, normalize by the maximum peak instead of 1.0.
   normalize: true,
   // Use the PeakCache to improve rendering speed of large waveforms.
-  partialRender: true
+  partialRender: true,
 });
 
 export default function Waveform({ url }) {
@@ -23,7 +26,6 @@ export default function Waveform({ url }) {
   const wavesurfer = useRef(null);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
-
 
   useEffect(() => {
     setPlay(false);
@@ -33,9 +35,7 @@ export default function Waveform({ url }) {
 
     wavesurfer.current.load(url);
 
-    wavesurfer.current.on("ready", function() {
-
-
+    wavesurfer.current.on("ready", function () {
       if (wavesurfer.current) {
         wavesurfer.current.setVolume(volume);
         setVolume(volume);
@@ -50,7 +50,7 @@ export default function Waveform({ url }) {
     wavesurfer.current.playPause();
   };
 
-  const onVolumeChange = e => {
+  const onVolumeChange = (e) => {
     const { target } = e;
     const newVolume = +target.value;
 
@@ -61,10 +61,12 @@ export default function Waveform({ url }) {
   };
 
   return (
-    <div>
+    <div className="audio">
       <div id="waveform" ref={waveformRef} />
       <div className="waveform__controls">
-        <button className="waveform__button" onClick={handlePlayPause}>{!playing ? "Play" : "Pause"}</button>
+        <button className="waveform__button" onClick={handlePlayPause}>
+          {!playing ? <img className="waveform__image" src={play}></img> : <img className="waveform__image" src={pause}></img>}
+        </button>
         <input
           type="range"
           id="volume"
@@ -75,9 +77,7 @@ export default function Waveform({ url }) {
           onChange={onVolumeChange}
           defaultValue={volume}
         />
-        <label htmlFor="volume">Volume</label>
       </div>
     </div>
   );
 }
-
