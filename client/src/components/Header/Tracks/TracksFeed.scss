@@ -1,8 +1,12 @@
 .tracksfeed {
   padding: 2rem 1rem;
+  min-height:100vh;
   &__title {
     color: #fff;
     margin: 0;
+    width: 36%;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #FFF;
   }
 }
 
@@ -39,7 +43,6 @@
     flex-direction: column;
     // justify-content: center;
     align-items: center;
-    height: 100vh;
     padding-top: 2rem;
   }
   &__title {

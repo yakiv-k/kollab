@@ -18,11 +18,20 @@ function TracksFeed() {
               <div className="card__info">
                 <img className="card__image" src={avatar}></img>
                 <div className="card__text-container">
-                  {/* <p className="card__title">Producer</p> */}
                   <p className="card__text card__text--bold">LightSLMN</p>
-                  {/* <p className="card__title">Title</p> */}
                   <p className="card__text">In Da Club</p>
-                  {/* <p className="card__text">Vibe from the other day...</p> */}
+                </div>
+              </div>
+              <Waveform url={testUrl} />
+            </div>
+          </div>
+          <div className="card">
+            <div className="card__content">
+              <div className="card__info">
+                <img className="card__image" src={avatar}></img>
+                <div className="card__text-container">
+                  <p className="card__text card__text--bold">YungMichael</p>
+                  <p className="card__text">K#1!</p>
                 </div>
               </div>
               <Waveform url={testUrl} />
