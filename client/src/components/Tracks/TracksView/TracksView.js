@@ -35,6 +35,16 @@ function TracksView() {
               </p>
             </div>
           </div>
+          <div className="tracksview__stems stems">
+            <h2 className="stems__title">Stems</h2>
+            <section className="stems__files-container">
+            {/* <a href="/images/myw3schoolsimage.jpg" download={origName}>{fileName}</a> */}
+            <a className="stems__file" download="foo.txt" target="_blank" href="https://www.gravatar.com/avatar/281c2df7dbce9284dca6059db944f8df?s=48&d=identicon&r=PG">Kick.wav</a>
+            <a className="stems__file" download="foo.txt" target="_blank" href="https://www.gravatar.com/avatar/281c2df7dbce9284dca6059db944f8df?s=48&d=identicon&r=PG">Clap.wav</a>
+            <a className="stems__file" download="foo.txt" target="_blank" href="https://www.gravatar.com/avatar/281c2df7dbce9284dca6059db944f8df?s=48&d=identicon&r=PG">Hi_Hat.wav</a>
+
+            </section>
+          </div>
         </div>
       </section>
     </>
