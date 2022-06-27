@@ -5,18 +5,25 @@ const knex = require("knex")(require("../knexfile").development);
 router.use(express.json());
 
 router.route("/producers/:id").get((req, res) => {
-  knex("tracks")
+  let selectedProducer;
+  knex("producers")
     .then((data) => {
       const producer_id = req.params.id;
+      selectedProducer = data.find((producer) => producer.id == producer_id);
+    })
+    .then((response) => {
+      knex("tracks").then((data) => {
+        const associatedTracks = data.filter(
+          (tracks) => tracks.producer_id == selectedProducer.id
+        );
 
-      const selectedProducer = data.find((producer) => {
-        return producer.id === producer_id;
+        res
+          .status(200)
+          .json({ producer: selectedProducer, tracks: associatedTracks });
       });
-
-      res.status(200).json(selectedProducer);
     })
     .catch((err) =>
-      res.status(400).send(`Error retrieving Inventories: ${err}`)
+      res.status(200).send(`Error retrieving Inventories: ${err}`)
     );
 });
 

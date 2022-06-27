@@ -19,9 +19,7 @@ router.route("/tracks/:id").get((req, res) => {
     .then((data) => {
       const track_id = req.params.id;
 
-      const selectedTrack = data.filter((files) => {
-        return files.id === track_id;
-      });
+      const selectedTrack = data.filter((files) => files.tracks_id == track_id);
 
       res.status(200).json(selectedTrack);
     })
