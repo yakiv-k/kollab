@@ -1,7 +1,7 @@
 const knex = require('knex')(require('../knexfile').development);
 
 exports.index = (_req, res) => {
-  knex('tracks')
+  knex('producers')
     .then((data) => {
       res.status(200).json(data);
     })
