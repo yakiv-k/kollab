@@ -11,8 +11,8 @@ require("dotenv").config();
 app.use(cors());
 
 // ROUTES
-app.use("/producer", producerRoutes);
-app.use("/tracks", tracksRoutes);
+app.use("/", producerRoutes);
+app.use("/", tracksRoutes);
 
 // LISTEN
 app.listen(PORT, () => {
