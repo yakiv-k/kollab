@@ -1,8 +1,11 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Header from "./components/Header/Header"
 import TracksPage from "./pages/TracksPage/TracksPage";
-import Header from "./components/Header/Header/Header";
+import TracksView from "./components/Tracks/TracksView/TracksView";
+
+// import axios from "axios";
+
 import "./styles/App.scss";
-import axios from "axios";
 
 function App() {
   return (
@@ -11,6 +14,7 @@ function App() {
         <Header />
         <Switch>
           <Route path="/tracks" exact component={TracksPage}></Route>
+          <Route path="/tracks/view" component={TracksView}></Route>
         </Switch>
       </BrowserRouter>
     </>

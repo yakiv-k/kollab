@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import WaveSurfer from "wavesurfer.js";
-import play from "../../../assets/icons/play.svg";
-import pause from "../../../assets/icons/pause.svg";
+import play from "../../assets/icons/play.svg";
+import pause from "../../assets/icons/pause.svg";
 
 import "./Waveform.scss";
 
@@ -65,13 +65,13 @@ export default function Waveform({ url }) {
       <div id="waveform" ref={waveformRef} />
       <div className="waveform__controls">
         <button className="waveform__button" onClick={handlePlayPause}>
-          {!playing ? <img className="waveform__image" src={play}></img> : <img className="waveform__image" src={pause}></img>}
+          {!playing ? <img alt="play icon" className="waveform__image" src={play}></img> : <img alt="pause icon" className="waveform__image" src={pause}></img>}
         </button>
         <input
           type="range"
           id="volume"
           name="volume"
-          min="0.01"
+          min="0"
           max="1"
           step=".025"
           onChange={onVolumeChange}

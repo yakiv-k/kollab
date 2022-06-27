@@ -1,0 +1,48 @@
+
+.tracksview {
+    background: linear-gradient(to bottom, #05031D 55%, #C0AAD3 100%);
+    width: 100%;
+    padding: 2rem 1rem;
+    min-height:100vh;
+    &__waveform {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #576490;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__heading {
+     color: #FFF;   
+    }
+    &__image {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin-top: 0.65rem;
+    }
+    &__selected {
+        background-color: #FFF;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1rem;
+        border-radius: 2px;
+    }
+    &__details-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom: 0.5rem;
+    }
+    &__details {
+        margin-top: 1rem;
+    }
+    &__content {
+        margin: 0;
+        font-size: 11px;
+    }
+    &__title {
+        margin: 0;
+        width: 33%;
+        font-size: 14px;
+        font-weight: 600;
+    }
+}

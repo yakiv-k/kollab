@@ -1,6 +1,5 @@
 import avatar from "../../../assets/images/test-avatar.png";
-import React, { useState } from "react";
-import Waveform from "../Waveform/Waveform";
+import Waveform from "../../Waveform/Waveform";
 
 import "./TracksFeed.scss";
 
@@ -16,7 +15,7 @@ function TracksFeed() {
           <div className="card">
             <div className="card__content">
               <div className="card__info">
-                <img className="card__image" src={avatar}></img>
+                <img className="card__image" alt="user avatar" src={avatar}></img>
                 <div className="card__text-container">
                   <p className="card__text card__text--bold">LightSLMN</p>
                   <p className="card__text">In Da Club</p>
@@ -28,7 +27,7 @@ function TracksFeed() {
           <div className="card">
             <div className="card__content">
               <div className="card__info">
-                <img className="card__image" src={avatar}></img>
+                <img className="card__image" alt="user avatar" src={avatar}></img>
                 <div className="card__text-container">
                   <p className="card__text card__text--bold">YungMichael</p>
                   <p className="card__text">K#1!</p>
