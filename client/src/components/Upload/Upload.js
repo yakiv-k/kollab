@@ -1,7 +1,8 @@
-import React from "react";
+import { Component } from "react";
+import axios from "axios";
 // import { useState } from "react";
 
-import "./Upload.js";
+import "./Upload.scss";
 
 class Upload extends Component {
   state = {
@@ -43,14 +44,53 @@ class Upload extends Component {
   render() {
     return (
       <>
-        <div onSubmit={this.handleFilesUpload} className="upload">
-          <form className="upload__form">
-            <label>Add image</label>
-            <input onChange={this.handleImageChange}></input>
-            <label>Add Project Files</label>
-            <input onChange={this.handleFileChange}></input>
-          </form>
-        </div>
+        <section onSubmit={this.handleFilesUpload} className="upload">
+          <h1 className="upload__title">Share</h1>
+          <div className="upload__content">
+            {/* <h2>Add</h2> */}
+            <form className="upload__form form">
+              <label className="form__label">Title</label>
+              <input
+                className="form__input"
+                placeholder="Enter a title"
+                type="text"
+                name="title"
+                id="title"
+                onChange={this.handleImageChange}
+              ></input>
+              <label className="form__label">Caption</label>
+              <input
+                className="form__input"
+                placeholder="Enter a caption"
+                type="text"
+                name="caption"
+                id="caption"
+                onChange={this.handleImageChange}
+              ></input>
+              <label className="form__label">Add image</label>
+              <input
+                className="form__input form__input--padding"
+                type="file"
+                name="image"
+                id="image"
+                // accept="image/jpeg, image/png"
+                accept=".jpeg, .jpg, .png"
+                onChange={this.handleImageChange}
+              ></input>
+              <label className="form__label">Add project files</label>
+              <input
+                className="form__input form__input--padding"
+                type="file"
+                name="stem"
+                id="stem"
+                accept=".wav"
+                multiple="multiple"
+                onChange={this.handleFileChange}
+              ></input>
+              <button className="form__button">Upload</button>
+            </form>
+          </div>
+        </section>
       </>
     );
   }
