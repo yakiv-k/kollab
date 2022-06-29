@@ -11,16 +11,16 @@ class Upload extends Component {
   };
 
   // GRAB PROJECT FILE(S)
-  handleFileChange(event) {
+  handleFileChange = (event) => {
     event.preventDefault();
-
+    console.log(event.target.files)
     this.setState({
       projectStemFiles: event.target.files,
     });
   }
 
   // GRAB IMAGE FILE
-  handleImageChange(event) {
+  handleImageChange = (event) => {
     event.preventDefault();
 
     this.setState({
@@ -28,16 +28,19 @@ class Upload extends Component {
     });
   }
 
-  handleFilesUpload(event) {
-    event.preventDefault();
-
+  handleFilesUpload = (event) => {
+    event.preventDefault()
     const formData = new FormData();
 
-    formData.append(this.state.projectStemFiles);
-    formData.append(this.state.projectImage);
+    // formData.append("stems", this.state.projectStemFiles);
+    formData.append("images", this.state.projectImage);
 
-    axios.post("testURL", formData).catch((err) => {
-      console.log("error");
+    Object.values(this.state.projectStemFiles).map((file) => {
+        formData.append("stems", file);
+      });
+
+    axios.post("http://localhost:8080/tracks", formData).catch((err) => {
+      console.log(err);
     });
   }
 
@@ -73,8 +76,8 @@ class Upload extends Component {
                 type="file"
                 name="image"
                 id="image"
-                // accept="image/jpeg, image/png"
-                accept=".jpeg, .jpg, .png"
+                accept="image/jpeg, image/png"
+                // accept=".jpeg, .jpg, .png"
                 onChange={this.handleImageChange}
               ></input>
               <label className="form__label">Add project files</label>
