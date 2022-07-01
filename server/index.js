@@ -8,7 +8,7 @@ const tracksRoutes = require("./routes/tracksRoutes");
 
 const PORT = process.env.PORT || 8080;
 require("dotenv").config();
-
+console.log(process.env.AWS_ACCESS_KEY);
 // CORS
 app.use(cors());
 

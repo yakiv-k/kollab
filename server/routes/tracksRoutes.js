@@ -8,17 +8,18 @@ const multer = require("multer");
 const multerS3 = require("multer-s3");
 const path = require("path");
 const fs = require("fs");
+const { json } = require("body-parser");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./public/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "./public/");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
 
-const s3 = new S3Client();
+const s3 = new S3Client({ region: "ca-central-1" });
 
 const upload = multer({
   storage: multerS3({
@@ -29,7 +30,8 @@ const upload = multer({
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
-      cb(null, Date.now().toString());
+      cb(null, file.originalname);
+      // cb(null, Date.now().toString());
     },
   }),
 });
@@ -53,17 +55,17 @@ router
   .post(
     upload.fields([{ name: "image" }, { name: "stems" }]),
     (req, res, next) => {
-        const imageData = req.files.image;
-        const stemsData = req.files.stems;
-        const getImageUrl = imageData.map((file) => {
-            return file.location;
-        })
-        const getStemsUrl = stemsData.map((file) => {
-            return file.location;
-        })
-        
-        const newUpload = { }
+      const imageData = req.files.image;
+      const stemsData = req.files.stems;
+      console.log(stemsData);
+      // const getImageUrl = imageData.map((file) => {
+      //     return file.location;
+      // })
+      // const getStemsUrl = stemsData.map((file) => {
+      //     return file.location;
+      // })
 
+      const newUpload = {};
 
       res.send("Successfully uploaded " + req.files.length + " files!");
     }
@@ -71,13 +73,22 @@ router
 
 // GET BY ID
 router.route("/tracks/:id").get((req, res) => {
-  knex("stems")
+  let selectedTrack;
+
+  // Isolate selected track
+  knex("tracks")
     .then((data) => {
       const track_id = req.params.id;
-
-      const selectedTrack = data.filter((files) => files.tracks_id == track_id);
-
-      res.status(200).json(selectedTrack);
+      selectedTrack = data.find((track) => track.id == track_id);
+    })
+    .then((response) => {
+      // Isolate all files associated with the selected track
+      knex("stems").then((data) => {
+        let associatedStems = data.filter((stem) => {
+          return stem.tracks_id == selectedTrack.id;
+        });
+        res.status(200).json({ track: selectedTrack, stems: associatedStems });
+      });
     })
     .catch((err) =>
       res.status(400).send(`Error retrieving Inventories: ${err}`)
