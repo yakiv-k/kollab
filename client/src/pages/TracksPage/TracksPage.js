@@ -1,32 +1,29 @@
 import TracksFeed from "../../components/Tracks/TracksFeed/TracksFeed";
+// import { Switch, Route } from "react-router-dom"
 import { Component } from "react";
 import axios from "axios";
-
 
 import "./TracksPage.scss";
 
 class TracksPage extends Component {
-
   state = {
-    tracks: []
-  }
+    tracks: [],
+  };
 
   componentDidMount() {
     axios.get("http://localhost:8080/tracks").then((response) => {
       // console.log(response.data)
       this.setState({
-        tracks: response.data
-      })
-    })
+        tracks: response.data,
+      });
+    });
   }
-  
 
   render() {
-
     return (
       <>
         <section className="tracks">
-          <TracksFeed tracksList={this.state.tracks}/>
+          <TracksFeed tracksList={this.state.tracks} />
         </section>
       </>
     );

@@ -24,8 +24,8 @@ function TracksFeed({ tracksList }) {
                   src={track.image_url}
                 ></img>
                 <div className="track__text-container">
-                  <p className="track__text track__text--bold">{track.name}</p>
-                  <Link to={TracksView} className="track__text">{track.title}</Link>
+                  <Link to={`/producer/${track.producer_id}`} className="track__text track__text--bold">{track.name}</Link>
+                  <Link to={`/tracks/${track.id}`} className="track__text">{track.title}</Link>
                 </div>
               </div>
               <Waveform url={track.audio_url} />

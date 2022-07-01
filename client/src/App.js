@@ -17,7 +17,7 @@ function App() {
         <Switch>
           <Route path="/tracks" exact component={TracksPage}></Route>
           <Route path="/tracks/:id" component={TracksView}></Route>
-          <Route path="/producer/view" component={ProducerPage}></Route>
+          <Route path="/producers/:id" component={ProducerPage}></Route>
           <Route path="/upload" component={UploadPage}></Route>
         </Switch>
       </BrowserRouter>
