@@ -93,7 +93,7 @@ class Upload extends Component {
                 type="file"
                 name="stems"
                 id="stems"
-                accept=".wav"
+                accept=".wav, .mp3"
                 multiple="multiple"
                 onChange={this.handleFileChange}
               ></input>
