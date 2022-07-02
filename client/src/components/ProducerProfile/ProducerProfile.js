@@ -1,5 +1,5 @@
 import Waveform from "../Waveform/Waveform";
-import avatar from "../../assets/images/test-avatar.png";
+import { Link } from "react-router-dom";
 
 import "./ProducerProfile.scss";
 
@@ -16,7 +16,7 @@ function ProducerProfile({ selectedProducer, selectedProducerTracks }) {
         <div className="producer__profile profile">
           <div className="profile__layout">
             <div className="profile__subdivision profile__subdivision--left">
-              <img className="producer__image" src={avatar}></img>
+              <img className="producer__image" src={selectedProducer.image_url}></img>
             </div>
             <div className="profile__subdivision profile__subdivision--right">
               <div className="profile__details">
@@ -33,12 +33,12 @@ function ProducerProfile({ selectedProducer, selectedProducerTracks }) {
                   <div className="catalogue__card card" key={track.id}>
                     <div className="card__content">
                       <div className="card__info">
-                        {/* <img className="card__image" alt="user avatar" src={avatar}></img> */}
+                        <img className="card__image" alt="user avatar" src={track.image_url}></img>
                         <div className="card__text-container">
                           <p className="card__text card__text--bold">
                             {track.name}
                           </p>
-                          <p className="card__text">{track.title}</p>
+                          <Link to={`/tracks/${track.id}`} className="card__text">{track.title}</Link>
                         </div>
                       </div>
                       <Waveform url={testUrl} />

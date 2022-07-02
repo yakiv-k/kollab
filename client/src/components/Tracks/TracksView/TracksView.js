@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Waveform from "../../Waveform/Waveform";
-import avatar from "../../../assets/images/test-avatar.png";
+import returnIcon from "../../../assets/icons/chevron-left.svg";
+// import avatar from "../../../assets/images/test-avatar.png";
 import axios from "axios";
 
 import "./TracksView.scss";
@@ -12,14 +13,13 @@ class TracksView extends Component {
 
   };
   track_id = this.props.match.params.id;
+  // history = useHistory();
 
-  testUrl =
-    "https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3";
 
   componentDidMount() {
     axios.get(`http://localhost:8080/tracks/${this.track_id}`).then((response) => {
-      console.log(response.data.track)
-      this.setState({
+ console.log(this.props.history)
+    this.setState({
         selectedTrack: response.data.track,
         selectedTrackStems: response.data.stems
       })
@@ -33,6 +33,9 @@ class TracksView extends Component {
         <section className="tracksview">
           <h1 className="tracksview__heading">View</h1>
           <div className="tracksview__selected">
+            <img 
+            // onClick={() => this.history.goBack()}
+            src={returnIcon} className="tracksview__icon"></img>
             <div className="tracksview__waveform">
               <img
                 src={this.state.selectedTrack.image_url}

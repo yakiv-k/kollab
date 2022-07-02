@@ -1,22 +1,39 @@
+@use "../../../styles/partials/mixins" as *;
+
 .tracksview {
   background: linear-gradient(to bottom, #05031d 55%, #c0aad3 100%);
   width: 100%;
   padding: 2rem 1rem;
   min-height: 100vh;
+  @include tablet {
+    padding: 2rem 5rem;
+  }
   &__waveform {
     padding-bottom: 1rem;
     border-bottom: 1px solid #e1e1e1;
     display: flex;
     justify-content: space-between;
+    @include tablet {
+      padding-bottom: 1.5rem;
+    }
   }
   &__heading {
     color: #fff;
+    @include tablet {
+      font-size: 2.25rem;
+    }
   }
   &__image {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    margin-top: 0.65rem;
+    margin-top: 0.95rem;
+    object-fit: cover;
+    @include tablet {
+      width: 4rem;
+      height: 4rem;
+      margin-left: 1rem;
+    }
   }
   &__selected {
     background-color: #fff;
@@ -24,6 +41,9 @@
     flex-direction: column;
     padding: 1.5rem 1rem;
     border-radius: 2px;
+    @include tablet {
+      padding: 1.75rem 2rem;
+    }
   }
   &__details-section {
     display: flex;
@@ -39,12 +59,27 @@
   &__content {
     margin: 0;
     font-size: 11px;
+    @include tablet {
+      font-size: 0.75rem;
+    }
   }
   &__title {
     margin: 0;
     width: 33%;
     font-size: 14px;
     font-weight: 600;
+    @include tablet {
+      width: 38%;
+      font-size: 1rem;
+    }
+  }
+  &__icon {
+    width: 1.125rem;
+    margin-bottom: 0.75rem;
+    @include tablet {
+      width: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
   }
 }
 
@@ -52,6 +87,9 @@
   &__title {
     margin: 1rem 0 0 0;
     font-size: 1.25rem;
+    @include tablet {
+      font-size: 1.5rem;
+    }
   }
   &__files-container {
     margin-top: 1rem;
@@ -62,13 +100,12 @@
     font-size: 0.85rem;
     width: 100%;
     padding: 0.5rem 0;
-    border-bottom: 1px solid #F1F1F1;
+    border-bottom: 1px solid #f1f1f1;
     border-radius: 3px;
     text-decoration: none;
     color: #05031d;
+    @include tablet {
+      padding: 0.75rem 0;
+    }
   }
-}
-
-a {
-  text-decoration: none;
 }
