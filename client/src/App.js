@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header"
-
+import HomePage from "./pages/HomePage/HomePage";
 import TracksPage from "./pages/TracksPage/TracksPage";
 import TracksView from "./components/Tracks/TracksView/TracksView";
 import ProducerPage from "./pages/ProducerPage/ProducerPage";
@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          {/* <Route path="/" exact component={HomePage}></Route> */}
+          <Route path="/" exact component={HomePage}></Route>
           <Route path="/tracks" exact component={TracksPage}></Route>
           <Route path="/tracks/:id" component={TracksView}></Route>
           <Route path="/producers/:id" component={ProducerPage}></Route>
