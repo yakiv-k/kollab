@@ -18,6 +18,10 @@ function Header() {
             </Link>
             <span className="nav__links-pipe">|</span>
             <p className="nav__links">Profile</p>
+            <span className="nav__links-pipe">|</span>
+            <Link to={`/upload`} className="nav__links">
+              Upload
+            </Link>
           </div>
         </nav>
       </header>

@@ -12,11 +12,12 @@ class TracksView extends Component {
     selectedTrackStems: []
 
   };
+  
   track_id = this.props.match.params.id;
-  // history = useHistory();
 
 
   componentDidMount() {
+
     axios.get(`http://localhost:8080/tracks/${this.track_id}`).then((response) => {
  console.log(this.props.history)
     this.setState({
@@ -34,7 +35,7 @@ class TracksView extends Component {
           <h1 className="tracksview__heading">View</h1>
           <div className="tracksview__selected">
             <img 
-            // onClick={() => this.history.goBack()}
+            onClick={history.back()}
             src={returnIcon} className="tracksview__icon"></img>
             <div className="tracksview__waveform">
               <img

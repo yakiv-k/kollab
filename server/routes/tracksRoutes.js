@@ -2,22 +2,13 @@ const express = require("express");
 const router = express.Router();
 const knex = require("knex")(require("../knexfile").development);
 // const { PutObjectCommand } = "@aws-sdk/client-s3";
-// const { s3Client } = "../libs/s3Client.js";
 const { S3Client } = require("@aws-sdk/client-s3");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const path = require("path");
 const fs = require("fs");
 const { json } = require("body-parser");
-
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "./public/");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.originalname);
-//   },
-// });
+const { v4: uuidv4 } = require("uuid");
 
 const s3 = new S3Client({ region: "ca-central-1" });
 
@@ -53,21 +44,43 @@ router
   })
   // POST FROM UPLOAD PAGE
   .post(
-    upload.fields([{ name: "image" }, { name: "stems" }]),
+    upload.fields([{ name: "image" }, { name: "stems" }, , { name: "track" }]),
     (req, res, next) => {
       const imageData = req.files.image;
+      const trackData = req.files.track;
       const stemsData = req.files.stems;
-      console.log(stemsData);
-      // const getImageUrl = imageData.map((file) => {
-      //     return file.location;
-      // })
-      // const getStemsUrl = stemsData.map((file) => {
-      //     return file.location;
-      // })
 
-      const newUpload = {};
+      // ISOLATE URL TO FILE
+      const getImageUrl = imageData.map((file) => {
+        return file.location;
+      });
+      const getTrackUrl = trackData.map((file) => {
+        return file.location;
+      });
+      const getStemsUrl = stemsData.map((file) => {
+        return file.location;
+      });
 
-      res.send("Successfully uploaded " + req.files.length + " files!");
+      // CREATE NEW TRACK OBJECT
+      let newTrack = {
+        id: "6",
+        // SET TO CURRENT USER ID
+        producer_id: "2",
+        title: req.body.title,
+        name: req.body.name,
+        caption: req.body.caption,
+        BPM: req.body.bpm,
+        image_url: getImageUrl[Object.keys(getImageUrl)[0]],
+        audio_url: getTrackUrl[Object.keys(getTrackUrl)[0]]
+      }
+      console.log(newTrack);
+
+      knex("tracks").insert(newTrack).then((data) => {
+        res.status(200).location("http://localhost:3000/tracks").json(data);
+      });
+
+      // knex;
+      // res.send("Successfully uploaded " + req.files.length + " files!");
     }
   );
 

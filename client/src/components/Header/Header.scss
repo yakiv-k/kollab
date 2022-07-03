@@ -20,7 +20,7 @@
   }
   &__links-division {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
   }
   &__links,
   &__links-pipe {
@@ -30,7 +30,7 @@
     font-weight: 600;
     font-size: 0.75rem;
     @include tablet {
-      font-size: 1.125rem;
+      font-size: 0.9rem;
     }
   }
   &__links {
