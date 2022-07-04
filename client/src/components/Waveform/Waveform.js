@@ -32,7 +32,7 @@ export default function Waveform({ url }) {
 
     const options = formWaveSurferOptions(waveformRef.current);
     wavesurfer.current = WaveSurfer.create(options);
-    console.log(options);
+    // console.log(options);
 
     wavesurfer.current.load(url);
 

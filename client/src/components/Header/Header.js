@@ -8,7 +8,7 @@ function Header() {
       <header className="header">
         <nav className="header__nav nav">
           <div className="nav__title-division">
-            <Link to="/tracks">
+            <Link to="/">
               <h1 className="nav__title">Kollab.</h1>
             </Link>
           </div>

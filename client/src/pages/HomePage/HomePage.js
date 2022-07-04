@@ -12,7 +12,7 @@ const signupUrl = `${baseUrl}/signup`;
 class HomePage extends Component {
   state = {
     isSignedUp: true,
-    isLoggedIn: true,
+    isLoggedIn: false,
     isLoginError: false,
     errorMessage: "",
   };
@@ -75,9 +75,14 @@ class HomePage extends Component {
     if (!isSignedUp) return this.renderSignUp();
     if (!isLoggedIn) return this.renderLogin();
 
+    if (isSignedUp && !isLoggedIn) {
+      setTimeout(() => {
+        this.props.history.push("/tracks");
+      }, 2000);
+    }
+
     return (
       <>
-        <TracksFeed />
       </>
     );
   }
