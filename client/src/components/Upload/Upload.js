@@ -9,7 +9,7 @@ class Upload extends Component {
   state = {
     projectStemFiles: null,
     projectImage: "",
-    track: "",
+    track: null,
     // isUploaded: false
   };
 
@@ -35,11 +35,13 @@ class Upload extends Component {
     this.setState({
       track: event.target.files,
     });
-    
   };
   handleFilesUpload = (event) => {
     event.preventDefault();
+
+    // NEW INSTANCE
     const formData = new FormData();
+
     formData.append("name", event.target.name.value);
     formData.append("title", event.target.title.value);
     formData.append("bpm", event.target.bpm.value);
@@ -48,17 +50,29 @@ class Upload extends Component {
     for (const file of this.state.projectImage) {
       formData.append("image", file);
     }
-    for (const file of this.state.track) {
+    // for (const file of this.state.track) {
+    //   formData.append("track", file);
+    // }
+    Object.values(this.state.track).map((file) => {
       formData.append("track", file);
-    }
+    });
     Object.values(this.state.projectStemFiles).map((file) => {
       formData.append("stems", file);
     });
 
+    // const token = sessionStorage.getItem("token");
+
     axios
-      .post("http://localhost:8080/tracks", formData, {
-        header: { "Content-Type": "multipart/form-data" },
-      })
+      .post(
+        "http://localhost:8080/tracks",
+        formData,
+        {
+          header: { "Content-Type": "multipart/form-data" },
+        }
+        // {
+        //   headers: { Authorization: `Bearer ${token}` },
+        // }
+      )
       .catch((err) => {
         console.log(err);
       });

@@ -15,16 +15,7 @@
   &__info {
     background-color: #ffffff;
   }
-  &__image {
-    width: 6rem;
-    height: 5rem;
-    border-radius: 5%;
-    object-fit: cover;
-    @include tablet {
-      width: 7rem;
-      height: 6rem;
-    }
-  }
+
 }
 
 .info {
@@ -45,6 +36,16 @@
     width: 100%;
     @include tablet {
       font-size: 0.75rem;
+    }
+  }
+   &__image {
+    width: 6rem;
+    height: 5rem;
+    border-radius: 5%;
+    object-fit: cover;
+    @include tablet {
+      width: 7rem;
+      height: 6rem;
     }
   }
   &__title {

@@ -7,7 +7,7 @@ import "./Waveform.scss";
 
 const formWaveSurferOptions = (ref) => ({
   container: ref,
-  waveColor: "#eee",
+  waveColor: "#E1E1E1",
   progressColor: "#576490",
   cursorColor: "#576490",
   barWidth: 1,

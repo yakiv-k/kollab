@@ -12,7 +12,7 @@ class TracksPage extends Component {
 
   componentDidMount() {
     const token = sessionStorage.getItem("token");
-    console.log(token);
+
     axios
       .get("http://localhost:8080/tracks", {
         headers: { Authorization: `Bearer ${token}` },
