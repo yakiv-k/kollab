@@ -27,6 +27,7 @@ export default function Waveform({ url }) {
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
 
+
   useEffect(() => {
     setPlay(false);
 

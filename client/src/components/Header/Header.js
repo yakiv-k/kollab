@@ -17,7 +17,7 @@ function Header() {
               Feed
             </Link>
             <span className="nav__links-pipe">|</span>
-            <p className="nav__links">Profile</p>
+            <Link to={`/profile`} className="nav__links">Profile</Link>
             <span className="nav__links-pipe">|</span>
             <Link to={`/upload`} className="nav__links">
               Upload
