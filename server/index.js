@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 
 const producerRoutes = require("./routes/producerRoutes");
 const tracksRoutes = require("./routes/tracksRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const PORT = process.env.PORT || 8080;
 require("dotenv").config();
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 // ROUTES
 app.use("/", producerRoutes);
 app.use("/", tracksRoutes);
+app.use("/", authRoutes);
 
 // LISTEN
 app.listen(PORT, () => {
