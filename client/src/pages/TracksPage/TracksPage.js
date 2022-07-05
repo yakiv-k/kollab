@@ -11,12 +11,18 @@ class TracksPage extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:8080/tracks").then((response) => {
-      // console.log(response.data)
-      this.setState({
-        tracks: response.data,
+    const token = sessionStorage.getItem("token");
+
+    axios
+      .get("http://localhost:8080/tracks", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(token);
+        this.setState({
+          tracks: response.data,
+        });
       });
-    });
   }
 
   render() {

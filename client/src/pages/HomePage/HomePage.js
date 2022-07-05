@@ -6,12 +6,12 @@ import Signup from "../../components/Signup/Signup";
 import TracksFeed from "../../components/Tracks/TracksFeed/TracksFeed";
 
 const baseUrl = "http://localhost:8080";
-const loginUrl = `${baseUrl}/login`;
-const signupUrl = `${baseUrl}/signup`;
+const loginUrl = `http://localhost:8080/login`;
+const signupUrl = `http://localhost:8080/signup`;
 
 class HomePage extends Component {
   state = {
-    isSignedUp: true,
+    isSignedUp: false,
     isLoggedIn: false,
     isLoginError: false,
     errorMessage: "",
@@ -38,11 +38,21 @@ class HomePage extends Component {
       });
   };
 
+  handleRegistered = (e) => {
+    e.preventDefault();
+
+    this.setState({
+        isSignedUp: true
+    })
+  }
+
   handleSignup = (e) => {
     e.preventDefault();
     axios
       .post(signupUrl, {
         name: e.target.name.value,
+        contact: e.target.contact.value,
+        avatar: e.target.image.value,
         username: e.target.username.value,
         password: e.target.password.value,
       })
@@ -57,7 +67,7 @@ class HomePage extends Component {
 
   renderSignUp() {
     return (
-     <Signup signUp={this.handleSignup}/>
+     <Signup signUp={this.handleSignup} registered={this.handleRegistered}/>
     );
   }
 
@@ -75,7 +85,7 @@ class HomePage extends Component {
     if (!isSignedUp) return this.renderSignUp();
     if (!isLoggedIn) return this.renderLogin();
 
-    if (isSignedUp && !isLoggedIn) {
+    if (isSignedUp && isLoggedIn) {
       setTimeout(() => {
         this.props.history.push("/tracks");
       }, 2000);
