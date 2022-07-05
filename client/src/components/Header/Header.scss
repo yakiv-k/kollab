@@ -3,14 +3,24 @@
 .header {
   background-color: #576490;
   color: #fff;
-  padding: 1rem;
-  @include tablet {
-    padding: 1.25rem 5rem;
+  // padding: 1rem;
+  // @include tablet {
+  //   padding: 1.25rem 5rem;
+  // }
+  @include desktop {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
   }
 }
 .nav {
   display: flex;
   justify-content: space-between;
+  @include desktop {
+    max-width: 98rem;
+    margin: 0 auto;
+    padding: 1.25rem 0;
+  }
   &__title {
     margin: 0;
     font-size: 1.25rem;

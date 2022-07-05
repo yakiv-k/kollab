@@ -60,18 +60,18 @@ class Upload extends Component {
       formData.append("stems", file);
     });
 
-    // const token = sessionStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
 
     axios
       .post(
         "http://localhost:8080/tracks",
-        formData,
+        formData, 
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
         {
           header: { "Content-Type": "multipart/form-data" },
         }
-        // {
-        //   headers: { Authorization: `Bearer ${token}` },
-        // }
       )
       .catch((err) => {
         console.log(err);

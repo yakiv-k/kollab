@@ -33,7 +33,7 @@ function Profile (
                 
                 {likedTracks.map((track) => {
                   return (
-                    <div className="liked__card card" >
+                    <div className="liked__card card" key={track.id}>
                       <div className="card__content">
                         <div className="card__info">
                           <img className="card__image" alt="user avatar" src={track.image_url}></img>

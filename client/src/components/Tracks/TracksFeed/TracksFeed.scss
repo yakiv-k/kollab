@@ -6,6 +6,11 @@
   @include tablet {
     padding: 3rem 5rem;
   }
+  @include desktop {
+    padding: 3rem 9rem;
+    max-width: 80rem;
+    margin: 0 auto;
+  }
   &__title {
     color: #fff;
     margin: 0;
@@ -28,6 +33,10 @@
   @include tablet {
     margin-bottom: 2.5rem;
     padding: 3rem 2.25rem 1.5rem 2.25rem;
+  }
+  @include desktop {
+    margin-bottom: 3.5rem;
+
   }
   &:hover {
     transition: 0.25s;
@@ -64,6 +73,9 @@
     padding-top: 2rem;
     @include tablet {
       padding-top: 2.5rem;
+    }
+    @include desktop {
+      padding-top: 3rem;
     }
   }
   &__title {
