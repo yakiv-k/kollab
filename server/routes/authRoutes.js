@@ -81,8 +81,8 @@ router.post("/login", (req, res) => {
 
 });
 
-router.get("/track", authorize, (req, res) => {
-  res.json(req.decoded);
-});
+// router.get("/track", authorize, (req, res) => {
+//   res.json(req.decoded);
+// });
 
 module.exports = router;
