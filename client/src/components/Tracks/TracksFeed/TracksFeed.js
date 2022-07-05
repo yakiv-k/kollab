@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./TracksFeed.scss";
 
 function TracksFeed({ tracksList }) {
-  return (
+  return !tracksList ? "Loading":(
     <>
       <div className="tracksfeed">
         <h2 className="tracksfeed__title">Latest</h2>

@@ -1,29 +1,37 @@
-// import axios from "axios";
-// import { Component } from "react";
-// import Profile from "../../components/Profile/Profile";
+import axios from "axios";
+import { Component } from "react";
+import Profile from "../../components/Profile/Profile";
 
-// import "./ProfilePage.scss";
+import "./ProfilePage.scss";
 
-// class ProfilePage extends Component {
-//   state = {
-//     likeTracks: [],
-//   };
+class ProfilePage extends Component {
+  state = {
+    profileData: [],
+    likedData: [],
+  };
 
 //   componentDidMount() {
-//     axios.get("http://localhost:8080/profile").then((response) => {
-//       const tracks = response.data;
-//       const liked = tracks.filter((track) => {
-//         return track.liked === false;
+//     axios
+//       .get("http://localhost:8080/profile", {
+//         headers: { Authorization: `Bearer ${token}` },
+//       })
+//       .then((response) => {
+//         this.setState({
+//           profileData: response.data[0],
+//           likedData: response.data[1],
+//         });
 //       });
-//       this.setState({
-//         likedTracks: liked,
-//     });
-//     });
+//     console.log(this.state.profileData);
 //   }
 
-//   render() {
-//     return <Profile liked={this.state.likeTracks}/>;
-//   }
-// }
+  render() {
+    return (
+      <Profile
+        // userProfile={this.state.profileData}
+        // likedTracks={this.state.likedData}
+      />
+    );
+  }
+}
 
-// export default ProfilePage;
+export default ProfilePage;
