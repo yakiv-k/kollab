@@ -79,7 +79,6 @@ export default function Waveform({ url, toggleLike, clickedId, likedValue }) {
           </button>
           <img onClick={(() => toggleLike(likedValue, clickedId))} 
           className="waveform__like-icon" 
-          // className={active = setActive } 
           src={likeIcon} ></img>
         </div>
         <input
