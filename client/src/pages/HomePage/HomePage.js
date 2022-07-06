@@ -3,9 +3,7 @@ import axios from "axios";
 import { Component } from "react";
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
-import TracksFeed from "../../components/Tracks/TracksFeed/TracksFeed";
 
-const baseUrl = "http://localhost:8080";
 const loginUrl = `http://localhost:8080/login`;
 const signupUrl = `http://localhost:8080/signup`;
 
@@ -81,7 +79,7 @@ class HomePage extends Component {
   render() {
     const { isLoggedIn, isSignedUp } = this.state;
 
-    // Handle the Signup/Login
+    // Handle Signup/Login
     if (!isSignedUp) return this.renderSignUp();
     if (!isLoggedIn) return this.renderLogin();
 

@@ -35,16 +35,14 @@
 }
 
 input[type="range"] {
-  //   width: 100px;
   -ms-appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   outline: none;
   cursor: pointer;
-  /*extra*/
   display: block;
-  margin: 10px 0 0 0;
+  margin: 0.625rem 0 0 0;
   position: relative;
 }
 
@@ -68,9 +66,9 @@ input[type="range"]::-webkit-slider-runnable-track {
 input[type="range"]::-webkit-slider-thumb {
   border: none;
   box-shadow: none;
-  height: 15px;
+  height: 0.9375rem;
   width: 3px;
-  border-radius: 12px;
+  border-radius: 0.7rem;
   background: #576490;
   -webkit-appearance: none;
   margin: -5px 0 0 0;
@@ -84,11 +82,11 @@ ref {
 }
 
 #waveform > wave {
-    height: 24px !important;
+    height: 1.5rem !important;
   @include tablet {
-    height: 64px !important;
+    height: 4rem !important;
   }
   @include desktop {
-    height: 88px !important;
+    height: 5.5rem !important;
   }
 }

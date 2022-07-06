@@ -120,11 +120,9 @@
     width: 25%;
   }
   &__image {
-    width: 35px;
-    height: 35px;
+    width: 2.1875rem;
+    height: 2.1875rem;
     border-radius: 50%;
-    // height: 90px;
-    // width: 90px;
   }
   &__content {
     display: flex;
@@ -134,7 +132,6 @@
   &__container {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
     padding-top: 2rem;
   }

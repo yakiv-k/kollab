@@ -13,7 +13,6 @@ const formWaveSurferOptions = (ref) => ({
   barWidth: 1,
   barRadius: 3,
   responsive: true,
-  // height: 64,
 
   // If true, normalize by the maximum peak instead of 1.0.
   normalize: true,
@@ -33,7 +32,6 @@ export default function Waveform({ url }) {
 
     const options = formWaveSurferOptions(waveformRef.current);
     wavesurfer.current = WaveSurfer.create(options);
-    // console.log(options);
 
     wavesurfer.current.load(url);
 
