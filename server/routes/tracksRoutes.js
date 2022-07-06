@@ -25,7 +25,6 @@ const upload = multer({
     },
     key: function (req, file, cb) {
       cb(null, file.originalname);
-      // cb(null, Date.now().toString());
     },
   }),
 });
@@ -41,7 +40,6 @@ function authorize(req, res, next) {
       return res.status(403).json({ success: false, message: "No token" });
     } else {
       req.decoded = decoded;
-      // res.json(req.decoded);
       next();
     }
   });
@@ -98,7 +96,7 @@ router
             return { name: stem.key, files: stem.location };
           });
         }
-      }
+      } 
 
       // GRAB PRODUCER NAME BY ID
       knex("producers")
@@ -134,6 +132,7 @@ router
             };
           });
 
+          //UPDATE DB WITH ASSOCIATED PROJECT FILES 
           knex("stems")
             .insert(stems)
             .then((data) => {

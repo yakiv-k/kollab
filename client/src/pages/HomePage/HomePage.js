@@ -13,6 +13,7 @@ class HomePage extends Component {
     isLoggedIn: false,
     isLoginError: false,
     errorMessage: "",
+    image: "",
   };
 
   handleLogin = (e) => {
@@ -40,9 +41,9 @@ class HomePage extends Component {
     e.preventDefault();
 
     this.setState({
-        isSignedUp: true
-    })
-  }
+      isSignedUp: true,
+    });
+  };
 
   handleSignup = (e) => {
     e.preventDefault();
@@ -65,15 +66,27 @@ class HomePage extends Component {
 
   renderSignUp() {
     return (
-     <Signup signUp={this.handleSignup} registered={this.handleRegistered}/>
+      <Signup handleImage={this.handleImageChange} signUp={this.handleSignup} registered={this.handleRegistered} />
     );
   }
 
   renderLogin = () => {
     const { isLoginError, errorMessage } = this.state;
     return (
-    <Login login={this.handleLogin} loginError={isLoginError} error={errorMessage}/>
+      <Login
+        login={this.handleLogin}
+        loginError={isLoginError}
+        error={errorMessage}
+      />
     );
+  };
+
+  // GRAB IMAGE FILE
+  handleImageChange = (event) => {
+    event.preventDefault();
+    this.setState({
+      image: event.target.files,
+    });
   };
 
   render() {
@@ -89,10 +102,7 @@ class HomePage extends Component {
       }, 2000);
     }
 
-    return (
-      <>
-      </>
-    );
+    return <></>;
   }
 }
 

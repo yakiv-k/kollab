@@ -82,16 +82,6 @@ class Upload extends Component {
           <h1 className="upload__title">Share</h1>
           <div className="upload__content">
             <form className="upload__form form" encType="multipart/form-data">
-              {/* <label className="form__label" htmlFor="name">
-                Name
-              </label>
-              <input
-                className="form__input"
-                placeholder="Enter a name"
-                type="text"
-                name="name"
-                id="name"
-              ></input> */}
               <label className="form__label" htmlFor="title">
                 Title
               </label>
@@ -151,7 +141,7 @@ class Upload extends Component {
                 onChange={this.handleFileChange}
               ></input>
               {/* <Link to="/tracks"> */}
-                <button className="form__button">Upload</button>
+              <button className="form__button">Upload</button>
               {/* </Link> */}
             </form>
           </div>

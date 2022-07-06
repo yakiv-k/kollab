@@ -33,7 +33,6 @@ router.route("/profile").get(authorize, (req, res) => {
       knex("tracks")
         .where({ liked: 1 })
         .then((data) => {
-            console.log(userId);
           likedTracks = data;
           res.status(200).json({ profile, likedTracks });
         });

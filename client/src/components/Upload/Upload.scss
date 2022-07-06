@@ -86,3 +86,25 @@
     }
   }
 }
+
+input::file-selector-button {
+  font-weight: normal;
+  font-size: 1rem;
+  color: #576490;;
+  background-color: #fff;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #afafaf;
+  border-radius: 3px;
+  &:hover {
+    color: #fff;
+    background-color: #576490;
+    border: 1px solid #afafaf;
+    transition: 0.5s;
+  }
+}
+
+input[type='file'] {
+  color: #afafaf;
+  padding-left: 1rem;
+}
