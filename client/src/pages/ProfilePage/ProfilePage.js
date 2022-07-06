@@ -28,10 +28,12 @@ class ProfilePage extends Component {
 
   render() {
     return (
-      <Profile
-        userProfile={this.state.profileData}
-        likedTracks={this.state.likedData}
-      />
+      <section className="profilepage">
+        <Profile
+          userProfile={this.state.profileData}
+          likedTracks={this.state.likedData}
+        />
+      </section>
     );
   }
 }

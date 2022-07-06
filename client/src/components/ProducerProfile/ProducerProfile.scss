@@ -8,9 +8,19 @@
   @include tablet {
     padding: 2rem 5rem;
   }
+  @include desktop {
+    padding: 2rem 9rem;
+    max-width: 80rem;
+    margin: 0 auto;
+  }
 
   &__name {
     color: #ffffff;
+    @include desktop {
+      font-size: 3rem;
+      max-width: 80rem;
+      margin: 2rem auto;
+    }
   }
   &__profile {
     background-color: #ffffff;

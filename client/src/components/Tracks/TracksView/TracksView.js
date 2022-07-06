@@ -13,6 +13,10 @@ class TracksView extends Component {
 
   track_id = this.props.match.params.id;
 
+  handleGoBack = () => {
+    this.props.history.goBack();
+  };
+
   componentDidMount() {
     axios
       .get(`http://localhost:8080/tracks/${this.track_id}`)
@@ -28,11 +32,15 @@ class TracksView extends Component {
     return !this.state.selectedTrack ? (
       "Loading"
     ) : (
-      <>
+      <div className="tracksview-container">
         <section className="tracksview">
           <h1 className="tracksview__heading">View</h1>
           <div className="tracksview__selected">
-            <img src={returnIcon} className="tracksview__icon"></img>
+            <img
+              onClick={this.handleGoBack}
+              src={returnIcon}
+              className="tracksview__icon"
+            ></img>
             <div className="tracksview__waveform">
               <img
                 src={this.state.selectedTrack.image_url}
@@ -72,13 +80,14 @@ class TracksView extends Component {
               <section className="stems__files-container">
                 {/* <a href="/images/myw3schoolsimage.jpg" download={origName}>{fileName}</a> */}
                 {this.state.selectedTrackStems.map((file) => {
+                  console.log(file)
                   return (
                     <a
                       className="stems__file"
-                      download="foo.txt"
+                      download={file.files}
                       target="_blank"
-                      href={file.file}
-                      key={file.id}
+                      href={file.files}
+                      key={file.id}            
                     >
                       {file.name}
                     </a>
@@ -88,7 +97,7 @@ class TracksView extends Component {
             </div>
           </div>
         </section>
-      </>
+      </div>
     );
   }
 }

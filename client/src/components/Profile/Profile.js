@@ -39,7 +39,7 @@ function Profile (
                           <img className="card__image" alt="user avatar" src={track.image_url}></img>
                           <div className="card__text-container">
                             <p className="card__text card__text--bold">
-                  
+                            {track.name}
                             </p>
                             <Link to={`/tracks/${track.id}`} className="card__text">{track.title}</Link>
                           </div>

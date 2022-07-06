@@ -1,6 +1,5 @@
 import { Component } from "react";
 import axios from "axios";
-// import { useState } from "react";
 
 import "./Upload.scss";
 import { Link } from "react-router-dom";
@@ -50,9 +49,7 @@ class Upload extends Component {
     for (const file of this.state.projectImage) {
       formData.append("image", file);
     }
-    // for (const file of this.state.track) {
-    //   formData.append("track", file);
-    // }
+
     Object.values(this.state.track).map((file) => {
       formData.append("track", file);
     });
@@ -65,7 +62,7 @@ class Upload extends Component {
     axios
       .post(
         "http://localhost:8080/tracks",
-        formData, 
+        formData,
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -76,23 +73,7 @@ class Upload extends Component {
       .catch((err) => {
         console.log(err);
       });
-
-    // this.setState({
-    //   isUploaded: true
-    // });
-
-    // setTimeout(() => {
-    //   this.props.history.push("/tracks");
-    // }, 1000);
   };
-
-  // componentDidUpdate() {
-  //   if (this.state.isUploaded === true) {
-  //     setTimeout(() => {
-  //       this.props.history.push("/tracks");
-  //     }, 2000);
-  //   }
-  // }
 
   render() {
     return (
@@ -156,7 +137,6 @@ class Upload extends Component {
                 type="file"
                 name="image"
                 id="image"
-                // accept="image/jpeg, image/png"
                 accept=".jpeg, .jpg, .png"
                 onChange={this.handleImageChange}
               ></input>
@@ -170,9 +150,9 @@ class Upload extends Component {
                 multiple="multiple"
                 onChange={this.handleFileChange}
               ></input>
-              {/* <Link to="/tracks"> */}
-              <button className="form__button">Upload</button>
-              {/* </Link> */}
+              <Link to="/tracks">
+                <button className="form__button">Upload</button>
+              </Link>
             </form>
           </div>
         </section>
@@ -182,20 +162,3 @@ class Upload extends Component {
 }
 
 export default Upload;
-
-// function Upload() {
-//     // const [stems, setStems] = useState(null);
-
-//     const handleUpload = ((event) => {
-//         event.prevenDefault();
-
-//     })
-
-//   return (
-//     <>
-//       <div className="upload__form"></div>
-//     </>
-//   );
-// }
-
-// export default Upload;

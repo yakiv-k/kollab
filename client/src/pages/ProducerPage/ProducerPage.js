@@ -24,9 +24,9 @@ class ProducerPage extends Component {
 
   render() {
     return (
-      <>
+      <section className="producer-profile">
         <ProducerProfile selectedProducer={this.state.selectedProducer} selectedProducerTracks={this.state.selectedProducerTracks}/>
-      </>
+      </section>
     );
   }
 }
