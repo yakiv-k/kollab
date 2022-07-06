@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const knex = require("knex")(require("../knexfile").development);
-// const { PutObjectCommand } = "@aws-sdk/client-s3";
 const { S3Client } = require("@aws-sdk/client-s3");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
@@ -10,9 +9,9 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 const SECRET_KEY = process.env.SECRET_KEY;
 
-// const fs = require("fs");
 const { json } = require("body-parser");
 const { v4: uuidv4 } = require("uuid");
+const { url } = require("inspector");
 
 const s3 = new S3Client({ region: "ca-central-1" });
 
@@ -37,7 +36,6 @@ router.use(express.json());
 // AUTH MIDDLEWARE
 function authorize(req, res, next) {
   let token = req.headers.authorization.slice("Bearer ".length);
-
   jwt.verify(token, SECRET_KEY, (err, decoded) => {
     if (err) {
       return res.status(403).json({ success: false, message: "No token" });
@@ -47,8 +45,6 @@ function authorize(req, res, next) {
       next();
     }
   });
-
-  // let token = sessionStorage.getItem("token");
 }
 
 // GET ALL
@@ -56,7 +52,7 @@ router
   .route("/tracks")
   .get(authorize, (req, res) => {
     const connectionsIdGet = [];
-    const token = req.decoded.name;
+    const token = req.decoded.id;
     const tracks = [];
 
     // GET CONNECTED PRODUCER ID'S
@@ -65,63 +61,76 @@ router
       .then((data) => {
         data.filter((connected) => {
           return connectionsIdGet.push(connected.producer2_id);
-          // }
         });
       });
 
     knex("tracks").then((data) => {
-
       // ONLY SEND TRACKS THAT ASSOCIATED WITH CONNECTIONS
       for (id of connectionsIdGet) {
-        tracks.push(data.filter((track) => {
-          return track.producer_id === id
-        }))   
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].producer_id === id) {
+            tracks.push(data[i]);
+          }
+        }
       }
-      res.status(200).json(tracks, req.decoded);
-    })
 
+      res.status(200).json(tracks);
+    });
   })
   // POST FROM UPLOAD PAGE
   .post(
+    authorize,
     upload.fields([{ name: "image" }, { name: "stems" }, , { name: "track" }]),
     (req, res, next) => {
       const imageData = req.files.image;
-      const trackData = req.files.track;
       const stemsData = req.files.stems;
-      const token = req.decoded.name
-      // ISOLATE URL TO FILE
-      const getImageUrl = imageData.map((file) => {
-        return file.location;
-      });
-      const getTrackUrl = trackData.map((file) => {
-        return file.location;
-      });
-      const getStemsUrl = stemsData.map((file) => {
-        return file.location;
-      });
+      const trackData = req.files.track;
+      const userId = req.decoded.id;
+
+      // FUNCTION: ISOLATE URL(S) TO FILE
+      function getUrl(fileData) {
+        let url = "";
+
+        if (fileData.length === 1) {
+          return (url = fileData[0].location);
+        } else {
+          return fileData.map((stem) => {
+            return { name: stem.key, files: stem.location };
+          });
+        }
+      }
 
       // CREATE NEW TRACK OBJECT
       let newTrack = {
         id: uuidv4(),
         // SET TO CURRENT USER ID
-        producer_id: token,
+        producer_id: userId,
         title: req.body.title,
         name: req.body.name,
         caption: req.body.caption,
         BPM: req.body.bpm,
-        image_url: getImageUrl[Object.keys(getImageUrl)[0]],
-        audio_url: getTrackUrl[Object.keys(getTrackUrl)[0]],
+        image_url: getUrl(imageData),
+        audio_url: getUrl(trackData),
       };
-      console.log(newTrack);
 
       knex("tracks")
         .insert(newTrack)
+        .then((data) => {});
+
+      const stems = getUrl(stemsData).map((stem) => {
+        return {
+          id: uuidv4(),
+          name: stem.name,
+          tracks_id: newTrack.id,
+          files: stem.files,
+        };
+      });
+
+      knex("stems")
+        .insert(stems)
         .then((data) => {
           res.status(200).location("http://localhost:3000/tracks").json(data);
         });
-
-      // knex;
-      // res.send("Successfully uploaded " + req.files.length + " files!");
     }
   );
 
