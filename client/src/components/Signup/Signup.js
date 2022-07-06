@@ -2,6 +2,7 @@ import "./Signup.scss";
 
 function Signup({ signUp, registered }) {
   return (
+    <section className="auth">
     <div className="signup">
       <h1 className="signup__title">SignUp</h1>
       <form className="signup__form form" onSubmit={signUp}>
@@ -27,6 +28,7 @@ function Signup({ signUp, registered }) {
         <p onClick={registered} className="form__redirect">Already have an account? Log in here</p>
       </form>
     </div>
+    </section>
   );
 }
 
