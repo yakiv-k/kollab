@@ -132,7 +132,10 @@ router
           res.status(200).location("http://localhost:3000/tracks").json(data);
         });
     }
-  );
+  )
+  .put((req, res) => {
+    console.log(req.body)
+  })
 
 // GET BY ID
 router.route("/tracks/:id").get((req, res) => {

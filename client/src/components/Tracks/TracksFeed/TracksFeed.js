@@ -1,11 +1,12 @@
 import Waveform from "../../Waveform/Waveform";
 import TracksView from "../TracksView/TracksView";
 
+
 import { Link } from "react-router-dom";
 
 import "./TracksFeed.scss";
 
-function TracksFeed({ tracksList }) {
+function TracksFeed({ tracksList, toggleLike }) {
   return !tracksList ? "Loading":(
     <>
       <div className="tracksfeed">
@@ -35,7 +36,7 @@ function TracksFeed({ tracksList }) {
                       </Link>
                     </div>
                   </div>
-                  <Waveform url={track.audio_url} />
+                  <Waveform url={track.audio_url} toggleLike={toggleLike}/>
                 </div>
               </div>
             );

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import WaveSurfer from "wavesurfer.js";
 import play from "../../assets/icons/play.svg";
 import pause from "../../assets/icons/pause.svg";
+import likeIcon from "../../assets/icons/heart.svg";
 
 import "./Waveform.scss";
 
@@ -20,12 +21,11 @@ const formWaveSurferOptions = (ref) => ({
   partialRender: true,
 });
 
-export default function Waveform({ url }) {
+export default function Waveform({ url, toggleLike }) {
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
-
 
   useEffect(() => {
     setPlay(false);
@@ -64,9 +64,20 @@ export default function Waveform({ url }) {
     <div className="audio">
       <div id="waveform" ref={waveformRef} />
       <div className="waveform__controls">
-        <button className="waveform__button" onClick={handlePlayPause}>
-          {!playing ? <img alt="play icon" className="waveform__image" src={play}></img> : <img alt="pause icon" className="waveform__image" src={pause}></img>}
-        </button>
+        <div className="waveform__icons">
+          <button className="waveform__button" onClick={handlePlayPause}>
+            {!playing ? (
+              <img alt="play icon" className="waveform__image" src={play}></img>
+            ) : (
+              <img
+                alt="pause icon"
+                className="waveform__image"
+                src={pause}
+              ></img>
+            )}
+          </button>
+          <img onClick={toggleLike}className="waveform__like-icon" src={likeIcon}></img>
+        </div>
         <input
           type="range"
           id="volume"

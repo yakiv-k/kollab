@@ -13,6 +13,7 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  padding: 1rem;
   @include desktop {
     max-width: 98rem;
     margin: 0 auto;

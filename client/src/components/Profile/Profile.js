@@ -33,10 +33,10 @@ function Profile({ userProfile, likedTracks }) {
                           alt="user avatar"
                           src={track.image_url}
                         ></img>
-                        <div className="card__text-container">
-                          <p className="card__text card__text--bold">
+                        <div className="card__text-container card__text-container--flex">
+                          <Link to={`/producers/${track.producer_id}`} className="card__text card__text--bold">
                             {track.name}
-                          </p>
+                          </Link>
                           <Link
                             to={`/tracks/${track.id}`}
                             className="card__text"

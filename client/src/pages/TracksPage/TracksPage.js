@@ -17,18 +17,24 @@ class TracksPage extends Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(token);
         this.setState({
           tracks: response.data,
         });
       });
   }
 
+  handleLike = (event) => {
+    event.preventDefault();
+    axios.patch("http://localhost:8080/tracks", {
+      liked: !!true
+   });
+  }
+
   render() {
     return (
       <>
         <section className="tracks">
-          <TracksFeed tracksList={this.state.tracks} />
+          <TracksFeed toggleLike={this.handleLike} tracksList={this.state.tracks} />
         </section>
       </>
     );

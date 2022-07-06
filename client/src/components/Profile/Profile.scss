@@ -173,6 +173,8 @@
   &__text-container {
     margin: 0;
     margin-bottom: 0.25rem;
+    display: flex;
+    flex-direction: column;
   }
   &__text {
     margin: 0;

@@ -13,11 +13,32 @@
   }
   &__image {
     width: 0.875rem;
+    &:hover {
+      cursor: pointer;
+    }
     @include tablet {
       width: 1.25rem;
     }
     @include desktop {
       width: 1.5rem;
+    }
+  }
+  &__icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__like-icon {
+    margin: 0.9rem 0 0 1rem;
+    width: 1rem;
+    height: 1rem;
+    &:hover {
+      cursor: pointer;
+    }
+    @include desktop {
+      margin: 0.9rem 0 0 3rem;
+      width: 1.5rem;
+      height: 1.5rem;
     }
   }
   &__controls {
@@ -47,6 +68,10 @@ input[type="range"] {
   display: block;
   margin: 0.625rem 0 0 0;
   position: relative;
+  max-width: 6rem;
+  @include tablet {
+   max-width: 15rem;
+  }
 }
 
 input[type="range"]::before,
@@ -85,7 +110,7 @@ ref {
 }
 
 #waveform > wave {
-    height: 1.5rem !important;
+    height: 2.75rem !important;
   @include tablet {
     height: 4rem !important;
   }

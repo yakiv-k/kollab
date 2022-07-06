@@ -37,6 +37,7 @@
   }
   @include desktop {
     margin-bottom: 3.5rem;
+    padding: 3rem 2.25rem 1.5rem 3.25rem;
 
   }
   &:hover {
@@ -51,6 +52,9 @@
     width: 30%;
     @include tablet {
       width: 22%;
+    }
+    @include desktop {
+      width: 16%;
     }
   }
   &__image {
