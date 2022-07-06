@@ -25,7 +25,6 @@ class TracksPage extends Component {
 
   handleLike = (liked, idValue) => {
     let tinyIntVal = "";
-    console.log(liked, idValue);
 
     if (liked === 1) {
       return (tinyIntVal = 0);

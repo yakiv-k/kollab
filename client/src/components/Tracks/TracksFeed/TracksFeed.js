@@ -1,6 +1,4 @@
 import Waveform from "../../Waveform/Waveform";
-import TracksView from "../TracksView/TracksView";
-
 
 import { Link } from "react-router-dom";
 

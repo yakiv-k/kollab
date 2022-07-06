@@ -148,15 +148,12 @@ router
     let currentVal = req.body.liked;
     let currentId = req.body.id;
 
-    console.log(currentVal, currentId);
     knex("tracks")
-    .where({"id": currentId})
-    .update({"liked": currentVal})
-    .then((data) => {
-      res.status(201)
-    });
-
-
+      .where({ id: currentId })
+      .update({ liked: currentVal })
+      .then((data) => {
+        res.status(201);
+      });
   });
 
 // GET BY ID
