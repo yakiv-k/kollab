@@ -8,6 +8,7 @@ module.exports = [
     BPM: "145",
     image_url: "",
     audio_url: "",
+    liked: "0",
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ module.exports = [
     BPM: "160",
     image_url: "",
     audio_url: "",
+    liked: "0",
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ module.exports = [
     BPM: "115",
     image_url: "",
     audio_url: "",
+    liked: "0",
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ module.exports = [
     BPM: "70",
     image_url: "",
     audio_url: "",
+    liked: "0",
   },
   {
     id: 5,
@@ -48,5 +52,6 @@ module.exports = [
     BPM: "140",
     image_url: "",
     audio_url: "",
+    liked: "0",
   },
 ];

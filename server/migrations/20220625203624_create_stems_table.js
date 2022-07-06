@@ -1,8 +1,8 @@
 exports.up = function (knex) {
   return knex.schema.createTable("stems", (table) => {
-    table.increments("id").primary();
+    table.string("id").primary();
     table
-      .integer("track_id")
+      .string("track_id")
       .unsigned()
       .notNullable()
       .references("id")
