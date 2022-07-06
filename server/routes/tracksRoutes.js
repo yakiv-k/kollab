@@ -100,42 +100,54 @@ router
         }
       }
 
-      // CREATE NEW TRACK OBJECT
-      let newTrack = {
-        id: uuidv4(),
-        // SET TO CURRENT USER ID
-        producer_id: userId,
-        title: req.body.title,
-        name: req.body.name,
-        caption: req.body.caption,
-        BPM: req.body.bpm,
-        image_url: getUrl(imageData),
-        audio_url: getUrl(trackData),
-      };
-
-      knex("tracks")
-        .insert(newTrack)
-        .then((data) => {});
-
-      const stems = getUrl(stemsData).map((stem) => {
-        return {
-          id: uuidv4(),
-          name: stem.name,
-          tracks_id: newTrack.id,
-          files: stem.files,
-        };
-      });
-
-      knex("stems")
-        .insert(stems)
+      // GRAB PRODUCER NAME BY ID
+      knex("producers")
+        .where({ id: userId })
         .then((data) => {
-          res.status(200).location("http://localhost:3000/tracks").json(data);
+          let userName = data[0].name;
+
+          // CREATE NEW TRACK OBJECT
+          let newTrack = {
+            id: uuidv4(),
+            // SET TO CURRENT USER ID
+            producer_id: userId,
+            title: req.body.title,
+            name: userName,
+            caption: req.body.caption,
+            BPM: req.body.bpm,
+            image_url: getUrl(imageData),
+            audio_url: getUrl(trackData),
+          };
+
+          // INSERT NEW TRACK TO TRACKS TABLE
+          knex("tracks")
+            .insert(newTrack)
+            .then((data) => {});
+
+          // ITERATE THROUGH ARRAY OF STEM FILES, CREATE OBJECT FOR EACH FILE
+          const stems = getUrl(stemsData).map((stem) => {
+            return {
+              id: uuidv4(),
+              name: stem.name,
+              tracks_id: newTrack.id,
+              files: stem.files,
+            };
+          });
+
+          knex("stems")
+            .insert(stems)
+            .then((data) => {
+              res
+                .status(200)
+                .location("http://localhost:3000/tracks")
+                .json(data);
+            });
         });
     }
   )
   .put((req, res) => {
-    console.log(req.body)
-  })
+    // console.log(req.body);
+  });
 
 // GET BY ID
 router.route("/tracks/:id").get((req, res) => {

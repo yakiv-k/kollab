@@ -9,13 +9,14 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 import "./styles/App.scss";
 
-const authUrl = "http://localhost:3000/";
+const authUrl1 = "http://localhost:3000";
+const authUrl2 = "http://localhost:3000/";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        {window.location.href !== authUrl && <Header />}
+        {window.location.href !== authUrl1 && window.location.href !== authUrl2 && <Header />}
 
         <Switch>
           <Route path="/" exact component={HomePage}></Route>

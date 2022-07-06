@@ -41,7 +41,7 @@ class Upload extends Component {
     // NEW INSTANCE
     const formData = new FormData();
 
-    formData.append("name", event.target.name.value);
+    // formData.append("name", event.target.name.value);
     formData.append("title", event.target.title.value);
     formData.append("bpm", event.target.bpm.value);
     formData.append("caption", event.target.bpm.value);
@@ -82,7 +82,7 @@ class Upload extends Component {
           <h1 className="upload__title">Share</h1>
           <div className="upload__content">
             <form className="upload__form form" encType="multipart/form-data">
-              <label className="form__label" htmlFor="name">
+              {/* <label className="form__label" htmlFor="name">
                 Name
               </label>
               <input
@@ -91,7 +91,7 @@ class Upload extends Component {
                 type="text"
                 name="name"
                 id="name"
-              ></input>
+              ></input> */}
               <label className="form__label" htmlFor="title">
                 Title
               </label>
@@ -150,9 +150,9 @@ class Upload extends Component {
                 multiple="multiple"
                 onChange={this.handleFileChange}
               ></input>
-              <Link to="/tracks">
+              {/* <Link to="/tracks"> */}
                 <button className="form__button">Upload</button>
-              </Link>
+              {/* </Link> */}
             </form>
           </div>
         </section>
