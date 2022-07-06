@@ -21,11 +21,12 @@ const formWaveSurferOptions = (ref) => ({
   partialRender: true,
 });
 
-export default function Waveform({ url, toggleLike }) {
+export default function Waveform({ url, toggleLike, clickedId, likedValue }) {
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     setPlay(false);
@@ -76,7 +77,10 @@ export default function Waveform({ url, toggleLike }) {
               ></img>
             )}
           </button>
-          <img onClick={toggleLike}className="waveform__like-icon" src={likeIcon}></img>
+          <img onClick={(() => toggleLike(likedValue, clickedId))} 
+          className="waveform__like-icon" 
+          // className={active = setActive } 
+          src={likeIcon} ></img>
         </div>
         <input
           type="range"

@@ -23,18 +23,30 @@ class TracksPage extends Component {
       });
   }
 
-  handleLike = (event) => {
-    event.preventDefault();
+  handleLike = (liked, idValue) => {
+    let tinyIntVal = "";
+    console.log(liked, idValue);
+
+    if (liked === 1) {
+      return (tinyIntVal = 0);
+    } else if (liked === 1) {
+      tinyIntVal = 0;
+    }
+
     axios.patch("http://localhost:8080/tracks", {
-      liked: !!true
-   });
-  }
+      liked: tinyIntVal,
+      id: idValue,
+    });
+  };
 
   render() {
     return (
       <>
         <section className="tracks">
-          <TracksFeed toggleLike={this.handleLike} tracksList={this.state.tracks} />
+          <TracksFeed
+            toggleLike={this.handleLike}
+            tracksList={this.state.tracks}
+          />
         </section>
       </>
     );

@@ -36,7 +36,7 @@ function TracksFeed({ tracksList, toggleLike }) {
                       </Link>
                     </div>
                   </div>
-                  <Waveform url={track.audio_url} toggleLike={toggleLike}/>
+                  <Waveform likedValue={track.liked} clickedId={track.id} url={track.audio_url} toggleLike={toggleLike}/>
                 </div>
               </div>
             );

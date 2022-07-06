@@ -96,7 +96,7 @@ router
             return { name: stem.key, files: stem.location };
           });
         }
-      } 
+      }
 
       // GRAB PRODUCER NAME BY ID
       knex("producers")
@@ -132,7 +132,7 @@ router
             };
           });
 
-          //UPDATE DB WITH ASSOCIATED PROJECT FILES 
+          //UPDATE DB WITH ASSOCIATED PROJECT FILES
           knex("stems")
             .insert(stems)
             .then((data) => {
@@ -144,8 +144,19 @@ router
         });
     }
   )
-  .put((req, res) => {
-    // console.log(req.body);
+  .patch((req, res) => {
+    let currentVal = req.body.liked;
+    let currentId = req.body.id;
+
+    console.log(currentVal, currentId);
+    knex("tracks")
+    .where({"id": currentId})
+    .update({"liked": currentVal})
+    .then((data) => {
+      res.status(201)
+    });
+
+
   });
 
 // GET BY ID
