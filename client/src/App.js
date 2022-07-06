@@ -9,11 +9,14 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 import "./styles/App.scss";
 
+const authUrl = "http://localhost:3000/";
+
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        {window.location.href !== authUrl && <Header />}
+
         <Switch>
           <Route path="/" exact component={HomePage}></Route>
           <Route path="/tracks" exact component={TracksPage}></Route>
