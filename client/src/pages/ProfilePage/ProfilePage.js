@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Component } from "react";
 import Profile from "../../components/Profile/Profile";
+import Header from "../../components/Header/Header";
 
 import "./ProfilePage.scss";
 
@@ -28,12 +29,15 @@ class ProfilePage extends Component {
 
   render() {
     return (
+      <>
+      <Header />
       <section className="profilepage">
         <Profile
           userProfile={this.state.profileData}
           likedTracks={this.state.likedData}
         />
       </section>
+      </>
     );
   }
 }

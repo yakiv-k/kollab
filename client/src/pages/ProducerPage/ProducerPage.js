@@ -1,5 +1,6 @@
 import { Component } from "react";
 import ProducerProfile from "../../components/ProducerProfile/ProducerProfile";
+import Header from "../../components/Header/Header";
 import axios from "axios";
 
 import "./ProducerPage.scss";
@@ -24,9 +25,11 @@ class ProducerPage extends Component {
 
   render() {
     return (
+      <>
+      <Header />
       <section className="producer-profile">
         <ProducerProfile selectedProducer={this.state.selectedProducer} selectedProducerTracks={this.state.selectedProducerTracks}/>
-      </section>
+      </section></>
     );
   }
 }

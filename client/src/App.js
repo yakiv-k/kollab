@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {window.location.href !== authUrl1 && window.location.href !== authUrl2 && <Header />}
+        {/* {window.location.href !== authUrl1 && window.location.href !== authUrl2 && <Header />} */}
 
         <Switch>
           <Route path="/" exact component={HomePage}></Route>

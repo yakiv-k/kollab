@@ -152,7 +152,7 @@ router
       .where({ id: currentId })
       .update({ liked: currentVal })
       .then((data) => {
-        res.status(201);
+        res.status(201).json(data);
       });
   });
 

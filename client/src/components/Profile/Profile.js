@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import "./Profile.scss";
 
 function Profile({ userProfile, likedTracks }) {
+  
   return (
     <>
       <section className="profile-page">
-        <h1 className="profile-page__name">Yasha</h1>
+        <h1 className="profile-page__name">{userProfile.name}</h1>
         <div className="profile-page__info info">
           <div className="info__layout">
             <div className="info__subdivision info__subdivision--left">

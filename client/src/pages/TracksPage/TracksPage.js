@@ -1,4 +1,5 @@
 import TracksFeed from "../../components/Tracks/TracksFeed/TracksFeed";
+import Header from "../../components/Header/Header";
 import { Component } from "react";
 import axios from "axios";
 
@@ -7,7 +8,10 @@ import "./TracksPage.scss";
 class TracksPage extends Component {
   state = {
     tracks: [],
+    // likeUpdate: 0
   };
+ 
+
 
   componentDidMount() {
     const token = sessionStorage.getItem("token");
@@ -24,16 +28,22 @@ class TracksPage extends Component {
   }
 
   handleLike = (liked, idValue) => {
-    let tinyIntVal = "";
+    let likedBool = "";
 
     if (liked === 1) {
-      return (tinyIntVal = 0);
-    } else if (liked === 1) {
-      tinyIntVal = 0;
+      likedBool = 0;
+      // this.setState({
+      //   likeUpdate: 0
+      // })
+    } else if (liked === 0) {
+      likedBool = 1;
+      // this.setState({
+      //   likeUpdate: 1
+      // })
     }
 
     axios.patch("http://localhost:8080/tracks", {
-      liked: tinyIntVal,
+      liked: likedBool,
       id: idValue,
     });
   };
@@ -41,10 +51,12 @@ class TracksPage extends Component {
   render() {
     return (
       <>
+      <Header />
         <section className="tracks">
           <TracksFeed
             toggleLike={this.handleLike}
             tracksList={this.state.tracks}
+            // likeUpdate={this.state.likeUpdate}
           />
         </section>
       </>
