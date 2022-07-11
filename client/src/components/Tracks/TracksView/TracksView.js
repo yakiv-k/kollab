@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Waveform from "../../Waveform/Waveform";
+import Header from "../../Header/Header";
 import returnIcon from "../../../assets/icons/chevron-left.svg";
 import axios from "axios";
 
@@ -32,72 +33,75 @@ class TracksView extends Component {
     return !this.state.selectedTrack ? (
       "Loading"
     ) : (
-      <div className="tracksview-container">
-        <section className="tracksview">
-          <h1 className="tracksview__heading">View</h1>
-          <div className="tracksview__selected">
-            <img
-              onClick={this.handleGoBack}
-              src={returnIcon}
-              className="tracksview__icon"
-            ></img>
-            <div className="tracksview__waveform">
+      <>
+      <Header />
+        <div className="tracksview-container">
+          <section className="tracksview">
+            <h1 className="tracksview__heading">View</h1>
+            <div className="tracksview__selected">
               <img
-                src={this.state.selectedTrack.image_url}
-                alt="user avatar"
-                className="tracksview__image"
+                onClick={this.handleGoBack}
+                src={returnIcon}
+                className="tracksview__icon"
               ></img>
-              <Waveform url={this.state.selectedTrack.audio_url} />
+              <div className="tracksview__waveform">
+                <img
+                  src={this.state.selectedTrack.image_url}
+                  alt="user avatar"
+                  className="tracksview__image"
+                ></img>
+                <Waveform url={this.state.selectedTrack.audio_url} />
+              </div>
+              <div className="tracksview__details">
+                <div className="tracksview__details-section">
+                  <p className="tracksview__title">Title</p>
+                  <p className="tracksview__content">
+                    {this.state.selectedTrack.title}
+                  </p>
+                </div>
+                <div className="tracksview__details-section">
+                  <p className="tracksview__title">Producer</p>
+                  <p className="tracksview__content">
+                    {this.state.selectedTrack.name}
+                  </p>
+                </div>
+                <div className="tracksview__details-section">
+                  <p className="tracksview__title">BPM</p>
+                  <p className="tracksview__content">
+                    {this.state.selectedTrack.BPM}
+                  </p>
+                </div>
+                <div className="tracksview__details-section">
+                  <p className="tracksview__title">Notes</p>
+                  <p className="tracksview__content">
+                    {this.state.selectedTrack.caption}
+                  </p>
+                </div>
+              </div>
+              <div className="tracksview__stems stems">
+                <h2 className="stems__title">Stems</h2>
+                <section className="stems__files-container">
+                  {/* <a href="/images/myw3schoolsimage.jpg" download={origName}>{fileName}</a> */}
+                  {this.state.selectedTrackStems.map((file) => {
+                    console.log(file);
+                    return (
+                      <a
+                        className="stems__file"
+                        download={file.files}
+                        target="_blank"
+                        href={file.files}
+                        key={file.id}
+                      >
+                        {file.name}
+                      </a>
+                    );
+                  })}
+                </section>
+              </div>
             </div>
-            <div className="tracksview__details">
-              <div className="tracksview__details-section">
-                <p className="tracksview__title">Title</p>
-                <p className="tracksview__content">
-                  {this.state.selectedTrack.title}
-                </p>
-              </div>
-              <div className="tracksview__details-section">
-                <p className="tracksview__title">Producer</p>
-                <p className="tracksview__content">
-                  {this.state.selectedTrack.name}
-                </p>
-              </div>
-              <div className="tracksview__details-section">
-                <p className="tracksview__title">BPM</p>
-                <p className="tracksview__content">
-                  {this.state.selectedTrack.BPM}
-                </p>
-              </div>
-              <div className="tracksview__details-section">
-                <p className="tracksview__title">Notes</p>
-                <p className="tracksview__content">
-                  {this.state.selectedTrack.caption}
-                </p>
-              </div>
-            </div>
-            <div className="tracksview__stems stems">
-              <h2 className="stems__title">Stems</h2>
-              <section className="stems__files-container">
-                {/* <a href="/images/myw3schoolsimage.jpg" download={origName}>{fileName}</a> */}
-                {this.state.selectedTrackStems.map((file) => {
-                  console.log(file)
-                  return (
-                    <a
-                      className="stems__file"
-                      download={file.files}
-                      target="_blank"
-                      href={file.files}
-                      key={file.id}            
-                    >
-                      {file.name}
-                    </a>
-                  );
-                })}
-              </section>
-            </div>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
+      </>
     );
   }
 }
