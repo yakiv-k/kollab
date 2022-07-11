@@ -3,7 +3,7 @@
 
 This is my capstone project that I have built from start to finish for BrainStations web development bootcamp. I was given the opportunity to demonstrate my knowledge by building a full-stack application over two weeks. I utilized React.js, SCSS, Node.js, Express.js, JWT, Knex, MySQL, and AWS S3 to build this project. 
 
-![Kollab preview](./demo/kollab-mobile.png)
+![Kollab preview](./demo/kollab.jpg)
 
 # Installation
 
