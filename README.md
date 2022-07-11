@@ -1,4 +1,4 @@
-# kollab
+# Kollab.
 ***The only professional tool you'll need to grow as a creative!***
 
 This is my capstone project that I have built from start to finish for BrainStations web development bootcamp. I was given the opportunity to demonstrate my knowledge by building a full-stack application over two weeks. I utilized React.js, SCSS, Node.js, Express.js, JWT, Knex, MySQL, and AWS S3 to build this project. 
@@ -40,19 +40,17 @@ Follow these steps to run a local instance of Kollab:
 
     Rename `.env_template` to `.env` and change placeholder values with your own.
 
-          ```shell
-
+    ```shell
     PORT=<PORT NUMBER>
     SECRET_KEY=<JWT SECRET KEY>
     DB_HOST=<HOST ADDRESS>
     DB_USER=<MYSQL DATABASE USER>
     DB_PASSWORD=<MYSQL DATABASE PASSWORD>
     AWS_BUCKET_NAME=<AWS S3 BUCKET NAME>
-    AWS_BUCKET_REGION=<AWS S3 BUCKE REGION>
+    AWS_BUCKET_REGION=<AWS S3 BUCKET REGION>
     AWS_ACCESS_KEY=<AWS S3 ACCESS KEY>
     AWS_SECRET_ACCESS_KEY=<AWS S3 SECRET ACCESS KEY>
-
-````
+    ````
 9. Start the server:
 ```bash
 $ node index.js
