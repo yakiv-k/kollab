@@ -7,6 +7,7 @@ import "./TracksPage.scss";
 class TracksPage extends Component {
   state = {
     tracks: [],
+    activeClass: false,
   };
 
   componentDidMount() {
@@ -24,16 +25,22 @@ class TracksPage extends Component {
   }
 
   handleLike = (liked, idValue) => {
-    let tinyIntVal = "";
+    let likedBool = "";
 
     if (liked === 1) {
-      return (tinyIntVal = 0);
-    } else if (liked === 1) {
-      tinyIntVal = 0;
+      likedBool = 0;
+      this.setState({
+        activeClass: true
+      })
+    } else if (liked === 0) {
+      likedBool = 1;
+      this.setState({
+        activeClass: false
+      })
     }
 
     axios.patch("http://localhost:8080/tracks", {
-      liked: tinyIntVal,
+      liked: likedBool,
       id: idValue,
     });
   };
@@ -45,6 +52,7 @@ class TracksPage extends Component {
           <TracksFeed
             toggleLike={this.handleLike}
             tracksList={this.state.tracks}
+            isActive={this.state.activeClass}
           />
         </section>
       </>

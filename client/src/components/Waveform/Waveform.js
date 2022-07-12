@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import WaveSurfer from "wavesurfer.js";
 import play from "../../assets/icons/play.svg";
 import pause from "../../assets/icons/pause.svg";
-import likeIcon from "../../assets/icons/heart.svg";
+// import likeIcon from "../../assets/icons/heart.png";
 
 import "./Waveform.scss";
 
@@ -21,12 +21,11 @@ const formWaveSurferOptions = (ref) => ({
   partialRender: true,
 });
 
-export default function Waveform({ url, toggleLike, clickedId, likedValue }) {
+export default function Waveform({ url, toggleLike, clickedId, likedValue, isActive }) {
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
-  const [active, setActive] = useState(false);
 
   useEffect(() => {
     setPlay(false);
@@ -77,9 +76,11 @@ export default function Waveform({ url, toggleLike, clickedId, likedValue }) {
               ></img>
             )}
           </button>
-          <img onClick={(() => toggleLike(likedValue, clickedId))} 
-          className="waveform__like-icon" 
-          src={likeIcon} ></img>
+          <div
+            onClick={() => toggleLike(likedValue, clickedId)}
+            // className="waveform__like-icon"
+            className={isActive ? "waveform__like-icon liked" : "waveform__like-icon"}
+          ></div>
         </div>
         <input
           type="range"

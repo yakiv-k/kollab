@@ -64,15 +64,16 @@ router
 
     knex("tracks").then((data) => {
       // ONLY SEND TRACKS THAT ASSOCIATED WITH CONNECTIONS
-      for (id of connectionsIdGet) {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].producer_id === id) {
-            tracks.push(data[i]);
-          }
-        }
-      }
+      // for (id of connectionsIdGet) {
+      //   for (let i = 0; i < data.length; i++) {
+      //     if (data[i].producer_id === id) {
+      //       tracks.push(data[i]);
+      //     }
+      //   }
+      // }
+      res.status(200).json(data);
 
-      res.status(200).json(tracks);
+      // res.status(200).json(tracks);
     });
   })
   // POST FROM UPLOAD PAGE
@@ -104,7 +105,7 @@ router
         .then((data) => {
           let userName = data[0].name;
 
-          // CREATE NEW TRACK OBJECT
+      //     // CREATE NEW TRACK OBJECT
           let newTrack = {
             id: uuidv4(),
             // SET TO CURRENT USER ID
@@ -117,12 +118,12 @@ router
             audio_url: getUrl(trackData),
           };
 
-          // INSERT NEW TRACK TO TRACKS TABLE
+      //     // INSERT NEW TRACK TO TRACKS TABLE
           knex("tracks")
             .insert(newTrack)
             .then((data) => {});
 
-          // ITERATE THROUGH ARRAY OF STEM FILES, CREATE OBJECT FOR EACH FILE
+      //     // ITERATE THROUGH ARRAY OF STEM FILES, CREATE OBJECT FOR EACH FILE
           const stems = getUrl(stemsData).map((stem) => {
             return {
               id: uuidv4(),
@@ -132,7 +133,7 @@ router
             };
           });
 
-          //UPDATE DB WITH ASSOCIATED PROJECT FILES
+      //     //UPDATE DB WITH ASSOCIATED PROJECT FILES
           knex("stems")
             .insert(stems)
             .then((data) => {

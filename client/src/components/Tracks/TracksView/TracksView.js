@@ -80,7 +80,6 @@ class TracksView extends Component {
               <section className="stems__files-container">
                 {/* <a href="/images/myw3schoolsimage.jpg" download={origName}>{fileName}</a> */}
                 {this.state.selectedTrackStems.map((file) => {
-                  console.log(file)
                   return (
                     <a
                       className="stems__file"

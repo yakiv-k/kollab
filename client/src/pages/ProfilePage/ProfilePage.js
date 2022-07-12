@@ -23,7 +23,6 @@ class ProfilePage extends Component {
           likedData: response.data.likedTracks,
         });
       });
-    console.log(this.state.profileData);
   }
 
   render() {
