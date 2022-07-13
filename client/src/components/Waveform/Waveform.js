@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import WaveSurfer from "wavesurfer.js";
 import play from "../../assets/icons/play.svg";
 import pause from "../../assets/icons/pause.svg";
-import likeIcon from "../../assets/icons/heart.svg";
+// import likeIcon from "../../assets/icons/heart.svg";
 
 import "./Waveform.scss";
 
@@ -21,7 +21,13 @@ const formWaveSurferOptions = (ref) => ({
   partialRender: true,
 });
 
-export default function Waveform({ url, toggleLike, clickedId, likedValue, likeUpdate }) {
+export default function Waveform({
+  url,
+  toggleLike,
+  clickedId,
+  likedValue,
+  likeUpdate,
+}) {
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const [playing, setPlay] = useState(false);
@@ -60,7 +66,6 @@ export default function Waveform({ url, toggleLike, clickedId, likedValue, likeU
       wavesurfer.current.setVolume(newVolume || 1);
     }
   };
- 
 
   return (
     <div className="audio">
@@ -78,11 +83,11 @@ export default function Waveform({ url, toggleLike, clickedId, likedValue, likeU
               ></img>
             )}
           </button>
-          <img 
-          onClick={(() => toggleLike(likedValue, clickedId))} 
-          className="waveform__like-icon"
-          // className={ likeUpdate === 1? "waveform__like-icon--active" : "waveform__like-icon"} 
-          src={likeIcon} ></img>
+          <div
+            onClick={() => toggleLike(likedValue, clickedId)}
+            className="waveform__like-icon"
+            // className={ likeUpdate === 1? "waveform__like-icon--active" : "waveform__like-icon"}
+          ></div>
         </div>
         <input
           type="range"

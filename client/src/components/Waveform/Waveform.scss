@@ -29,23 +29,77 @@
     align-items: center;
   }
   &__like-icon {
-    margin: 0.9rem 0 0 1rem;
-    width: 1rem;
-    height: 1rem;
-    &--active {
-      margin: 0.9rem 0 0 1rem;
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-    &:hover {
+    position: relative;
+    width: 82px;
+    height: 7px;
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 12px;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+      width: 14px;
+      height: 21px;
+      border-radius: 40px 40px 0 0;
+      background-color: #000000;
+      content: "";
       cursor: pointer;
+      transition: background 0.4s;
     }
-    @include desktop {
-      margin: 0.9rem 0 0 3rem;
-      width: 1.5rem;
-      height: 1.5rem;
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+      width: 14px;
+      height: 21px;
+      border-radius: 40px 40px 0 0;
+      background-color: #000000;
+      content: "";
+      cursor: pointer;
+      transition: background 0.4s;
     }
   }
+
+  &__like-icon.liked::before,
+  &__like-icon.liked::after {
+    background-color: #d65076;
+    margin-left: 0.75rem;
+  }
+
+  &__heart-like-icon.liked {
+    animation: liked 0.4s ease;
+  }
+  @keyframes liked {
+    0% {
+      transform: scale(0.8);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  // &__like-icon {
+  //   margin: 0.9rem 0 0 1rem;
+  //   width: 1rem;
+  //   height: 1rem;
+  //   &--active {
+  //     margin: 0.9rem 0 0 1rem;
+  //     width: 1.5rem;
+  //     height: 1.5rem;
+  //   }
+  //   &:hover {
+  //     cursor: pointer;
+  //   }
+  //   @include desktop {
+  //     margin: 0.9rem 0 0 3rem;
+  //     width: 1.5rem;
+  //     height: 1.5rem;
+  //   }
+  // }
   &__controls {
     display: flex;
     align-items: center;
@@ -75,7 +129,7 @@ input[type="range"] {
   position: relative;
   max-width: 6rem;
   @include tablet {
-   max-width: 15rem;
+    max-width: 15rem;
   }
 }
 
@@ -115,7 +169,7 @@ ref {
 }
 
 #waveform > wave {
-    height: 2.75rem !important;
+  height: 2.75rem !important;
   @include tablet {
     height: 4rem !important;
   }

@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable("tracks", (table) => {
-    table.increments("id").primary();
+    table.string("id").primary();
     table
       .string("producer_id")
       .unsigned()
