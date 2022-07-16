@@ -8,10 +8,9 @@ import "./TracksPage.scss";
 class TracksPage extends Component {
   state = {
     tracks: [],
-    // likeUpdate: 0
+    // likedStatus: null
+    activeClass: null,
   };
- 
-
 
   componentDidMount() {
     const token = sessionStorage.getItem("token");
@@ -23,9 +22,14 @@ class TracksPage extends Component {
       .then((response) => {
         this.setState({
           tracks: response.data,
+          // likedStatus: response.data.liked
         });
       });
   }
+  
+  // componentDidUpdate(prevProps, prevState) {
+  
+  // }
 
   handleLike = (liked, idValue) => {
     let likedBool = "";
@@ -33,13 +37,13 @@ class TracksPage extends Component {
     if (liked === 1) {
       likedBool = 0;
       // this.setState({
-      //   likeUpdate: 0
-      // })
+      //   activeClass: false,
+      // });
     } else if (liked === 0) {
       likedBool = 1;
       // this.setState({
-      //   likeUpdate: 1
-      // })
+      //   activeClass: true,
+      // });
     }
 
     axios.patch("http://localhost:8080/tracks", {
@@ -51,12 +55,12 @@ class TracksPage extends Component {
   render() {
     return (
       <>
-      <Header />
+        <Header />
         <section className="tracks">
           <TracksFeed
             toggleLike={this.handleLike}
             tracksList={this.state.tracks}
-            // likeUpdate={this.state.likeUpdate}
+            isActive={this.state.activeClass}
           />
         </section>
       </>

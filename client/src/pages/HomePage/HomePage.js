@@ -18,21 +18,18 @@ class HomePage extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    console.log(e);
     axios
       .post(loginUrl, {
         username: e.target.username.value,
         password: e.target.password.value,
       })
       .then((response) => {
-        console.log(response);
         sessionStorage.setItem("token", response.data.token);
         this.setState({
           isLoggedIn: true,
         });
       })
       .catch((err) => {
-        console.log(err);
         this.setState({ isLoginError: true, errorMessage: err });
       });
   };
@@ -56,7 +53,6 @@ class HomePage extends Component {
         password: e.target.password.value,
       })
       .then((response) => {
-        console.log(response);
         this.setState({
           isSignedUp: true,
         });

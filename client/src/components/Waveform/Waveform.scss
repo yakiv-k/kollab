@@ -35,7 +35,7 @@
     &:before {
       position: absolute;
       top: 0;
-      left: 12px;
+      left: 14px;
       transform: rotate(-45deg);
       transform-origin: 0 100%;
       width: 14px;
@@ -62,16 +62,15 @@
     }
   }
 
-  &__like-icon.liked::before,
-  &__like-icon.liked::after {
+  &__like-icon.active::before,
+  &__like-icon.active::after {
     background-color: #d65076;
-    margin-left: 0.75rem;
   }
 
-  &__heart-like-icon.liked {
-    animation: liked 0.4s ease;
+  &__heart-like-icon.active {
+    animation: active 0.05s ease;
   }
-  @keyframes liked {
+  @keyframes active {
     0% {
       transform: scale(0.8);
     }

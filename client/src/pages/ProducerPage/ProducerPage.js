@@ -15,7 +15,6 @@ class ProducerPage extends Component {
 
   componentDidMount() {
     axios.get(`http://localhost:8080/producers/${this.producer_id}`).then((response) => {
-        console.log(response.data);
       this.setState({
         selectedProducer: response.data.producer,
         selectedProducerTracks: response.data.tracks

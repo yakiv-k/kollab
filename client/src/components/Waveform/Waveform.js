@@ -26,12 +26,13 @@ export default function Waveform({
   toggleLike,
   clickedId,
   likedValue,
-  likeUpdate,
+  isActive
 }) {
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
+
   // const [active, setActive] = useState(likedValue === 0? false: true);
 
   useEffect(() => {
@@ -85,8 +86,8 @@ export default function Waveform({
           </button>
           <div
             onClick={() => toggleLike(likedValue, clickedId)}
-            className="waveform__like-icon"
-            // className={ likeUpdate === 1? "waveform__like-icon--active" : "waveform__like-icon"}
+            // className="waveform__like-icon"
+            className={likedValue === 1 ? "waveform__like-icon active" : "waveform__like-icon"}
           ></div>
         </div>
         <input

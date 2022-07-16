@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./TracksFeed.scss";
 
-function TracksFeed({ tracksList, toggleLike, likeUpdate}) {
+function TracksFeed({ tracksList, toggleLike, isActive }) {
   return !tracksList ? "Loading":(
     <>
       <div className="tracksfeed">
@@ -34,7 +34,7 @@ function TracksFeed({ tracksList, toggleLike, likeUpdate}) {
                       </Link>
                     </div>
                   </div>
-                  <Waveform likeUpdate={likeUpdate} likedValue={track.liked} clickedId={track.id} url={track.audio_url} toggleLike={toggleLike}/>
+                  <Waveform isActive={isActive} likedValue={track.liked} clickedId={track.id} url={track.audio_url} toggleLike={toggleLike}/>
                 </div>
               </div>
             );
