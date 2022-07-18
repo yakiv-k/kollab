@@ -31,6 +31,11 @@
   border-radius: 2px;
   margin-bottom: 1rem;
   padding: 1rem;
+  // &:hover {
+  //   transition: 0.25s;
+  //   transform: translateY(-0.25rem);
+  //   // background-color: #05031d;
+  // }
   @include tablet {
     margin-bottom: 2.5rem;
     padding: 3rem 2.25rem 1.5rem 2.25rem;
@@ -39,10 +44,6 @@
     margin-bottom: 3.5rem;
     padding: 3rem 2.25rem 1.5rem 3.25rem;
 
-  }
-  &:hover {
-    transition: 0.25s;
-    transform: translateY(-0.25rem);
   }
   &__info {
     display: flex;

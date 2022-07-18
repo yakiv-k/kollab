@@ -63,7 +63,7 @@ function Profile({ userProfile, likedTracks }) {
                               </Link>
                             </div>
                           </div>
-                          <Waveform url={track.audio_url} />
+                          <Waveform likedValue={track.liked} url={track.audio_url} />
                         </div>
                       </div>
                     );
