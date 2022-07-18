@@ -1,7 +1,7 @@
-import Waveform from "../Waveform/Waveform";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useTransition, animated } from "react-spring";
+import Waveform from "../Waveform/Waveform";
 
 import "./Profile.scss";
 

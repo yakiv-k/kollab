@@ -38,6 +38,7 @@ class TracksView extends Component {
         <div className="tracksview-container">
           <section className="tracksview">
             <h1 className="tracksview__heading">View</h1>
+
             <div className="tracksview__selected">
               <img
                 onClick={this.handleGoBack}
@@ -81,7 +82,6 @@ class TracksView extends Component {
               <div className="tracksview__stems stems">
                 <h2 className="stems__title">Stems</h2>
                 <section className="stems__files-container">
-                  {/* <a href="/images/myw3schoolsimage.jpg" download={origName}>{fileName}</a> */}
                   {this.state.selectedTrackStems.map((file) => {
                     return (
                       <a
@@ -98,6 +98,7 @@ class TracksView extends Component {
                 </section>
               </div>
             </div>
+            
           </section>
         </div>
       </>
