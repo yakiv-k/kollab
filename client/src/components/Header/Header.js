@@ -14,6 +14,8 @@ function Header() {
 
   const showSidebar = () => setSidebar(!sidebar);
 
+  const logout = () => sessionStorage.clear();
+
   return (
     <>
       <div className="header">
@@ -71,7 +73,7 @@ function Header() {
               </Link>
             </li>
             <li className="nav__sidebar-item nav__sidebar-logout">
-              <Link to={`/`} onClick={showSidebar}>
+              <Link to={`/`} onClick={logout}>
                 <MdIcons.MdLogout
                   className="nav__sidebar-icons"
                   onClick={showSidebar}

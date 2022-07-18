@@ -19,7 +19,7 @@ function Signup({ signUp, registered, handleImage }) {
 
         {transition((style, item) =>
           item ? (
-            <animated.div
+            <animated.form
               style={style}
               className="signup__form form"
               onSubmit={signUp}
@@ -70,7 +70,7 @@ function Signup({ signUp, registered, handleImage }) {
               <p onClick={registered} className="form__redirect">
                 Already have an account? Log in here
               </p>
-            </animated.div>
+            </animated.form>
           ) : (
             ""
           )
