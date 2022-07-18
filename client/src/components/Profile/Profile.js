@@ -20,7 +20,7 @@ function Profile({ userProfile, likedTracks }) {
         <h1 className="profile-page__name">{userProfile.name}</h1>
         {transition((style, item) =>
           item ? (
-            <animated.div style={style} className="profile-page__info info">
+            <animated.form style={style} className="profile-page__info info">
               <div className="info__layout">
                 <div className="info__subdivision info__subdivision--left">
                   <img
@@ -34,7 +34,7 @@ function Profile({ userProfile, likedTracks }) {
                     <p className="info__text">{userProfile.contact}</p>
                   </div>
                 </div>
-              </div>
+              </div> 
               <div className="info__liked liked">
                 <h2 className="liked__heading">Liked</h2>
                 <article className="liked__content">
@@ -70,7 +70,7 @@ function Profile({ userProfile, likedTracks }) {
                   })}
                 </article>
               </div>
-            </animated.div>
+            </animated.form>
           ) : (
             ""
           )
