@@ -8,7 +8,6 @@ import "./TracksPage.scss";
 class TracksPage extends Component {
   state = {
     tracks: [],
-    // likedStatus: null
     activeClass: null,
   };
 
@@ -22,14 +21,9 @@ class TracksPage extends Component {
       .then((response) => {
         this.setState({
           tracks: response.data,
-          // likedStatus: response.data.liked
         });
       });
   }
-  
-  // componentDidUpdate(prevProps, prevState) {
-  
-  // }
 
   handleLike = (liked, idValue) => {
     let likedBool = "";
