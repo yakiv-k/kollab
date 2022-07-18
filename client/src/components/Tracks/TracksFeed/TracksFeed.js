@@ -25,7 +25,11 @@ function TracksFeed({ tracksList, toggleLike, isActive }) {
             item
               ? tracksList.map((track) => {
                   return (
-                    <animated.div style={style} className="track" key={track.id}>
+                    <animated.div
+                      style={style}
+                      className="track"
+                      key={track.id}
+                    >
                       <div className="track__content">
                         <div className="track__info">
                           <Link to={`/producers/${track.producer_id}`}>
@@ -51,17 +55,17 @@ function TracksFeed({ tracksList, toggleLike, isActive }) {
                           </div>
                         </div>
                         <Waveform
-                          isActive={isActive}
                           likedValue={track.liked}
                           clickedId={track.id}
                           url={track.audio_url}
                           toggleLike={toggleLike}
+                          trackId={track.id}
                         />
                       </div>
                     </animated.div>
                   );
                 })
-             : ""
+              : ""
           )}
         </div>
       </div>
@@ -70,33 +74,3 @@ function TracksFeed({ tracksList, toggleLike, isActive }) {
 }
 
 export default TracksFeed;
-
-// tracksList.map((track) => {
-//   return (
-//     <div className="track" key={track.id}>
-//       <div className="track__content">
-//         <div className="track__info">
-//           <Link to={`/producers/${track.producer_id}`}>
-//             <img
-//               className="track__image"
-//               alt="user avatar"
-//               src={track.image_url}
-//             ></img>
-//           </Link>
-//           <div className="track__text-container">
-//             <Link
-//               to={`/producers/${track.producer_id}`}
-//               className="track__text track__text--bold"
-//             >
-//               {track.name}
-//             </Link>
-//             <Link to={`/tracks/${track.id}`} className="track__text">
-//               {track.title}
-//             </Link>
-//           </div>
-//         </div>
-//         <Waveform isActive={isActive} likedValue={track.liked} clickedId={track.id} url={track.audio_url} toggleLike={toggleLike}/>
-//       </div>
-//     </div>
-//   );
-// })

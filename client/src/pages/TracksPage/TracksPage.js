@@ -8,7 +8,6 @@ import "./TracksPage.scss";
 class TracksPage extends Component {
   state = {
     tracks: [],
-    activeClass: null,
   };
 
   componentDidMount() {
@@ -25,26 +24,26 @@ class TracksPage extends Component {
       });
   }
 
-  handleLike = (liked, idValue) => {
-    let likedBool = "";
+  // handleLike = (liked, idValue) => {
+  //   let likedBool = "";
 
-    if (liked === 1) {
-      likedBool = 0;
-      // this.setState({
-      //   activeClass: false,
-      // });
-    } else if (liked === 0) {
-      likedBool = 1;
-      // this.setState({
-      //   activeClass: true,
-      // });
-    }
+  //   if (liked === 1) {
+  //     likedBool = 0;
+  //     // this.setState({
+  //     //   activeClass: "waveform__like-icon",
+  //     // });
+  //   } else if (liked === 0) {
+  //     likedBool = 1;
+  //     // this.setState({
+  //     //   activeClass: "waveform__like-icon active",
+  //     // });
+  //   }
 
-    axios.patch("http://localhost:8080/tracks", {
-      liked: likedBool,
-      id: idValue,
-    });
-  };
+  //   axios.patch("http://localhost:8080/tracks", {
+  //     liked: likedBool,
+  //     id: idValue,
+  //   });
+  // };
 
   render() {
     return (
@@ -54,7 +53,6 @@ class TracksPage extends Component {
           <TracksFeed
             toggleLike={this.handleLike}
             tracksList={this.state.tracks}
-            isActive={this.state.activeClass}
           />
         </section>
       </>

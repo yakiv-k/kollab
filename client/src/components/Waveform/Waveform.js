@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import WaveSurfer from "wavesurfer.js";
 import play from "../../assets/icons/play.svg";
 import pause from "../../assets/icons/pause.svg";
+import axios from "axios";
+
 // import likeIcon from "../../assets/icons/heart.svg";
 
 import "./Waveform.scss";
@@ -21,21 +23,39 @@ const formWaveSurferOptions = (ref) => ({
   partialRender: true,
 });
 
-export default function Waveform({
-  url,
-  toggleLike,
-  clickedId,
-  likedValue,
-  isActive
-}) {
+export default function Waveform({ url, toggleLike, clickedId, likedValue }) {
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const [playing, setPlay] = useState(false);
   const [volume, setVolume] = useState(0.5);
 
-  // const [active, setActive] = useState(likedValue === 0? false: true);
+  const [liked, setLiked] = useState(likedValue);
+
+  const toggleClass = (likedValue, idValue) => {
+    let likedBool = 0;
+
+    if (liked == 1) {
+      likedBool = 0;
+      setLiked(!liked);
+
+      axios.patch("http://localhost:8080/tracks", {
+        liked: likedBool,
+        id: idValue,
+      });
+    } else if (liked == 0) {
+      likedBool = 1;
+      setLiked(!liked);
+
+      axios.patch("http://localhost:8080/tracks", {
+        liked: likedBool,
+        id: idValue,
+      });
+    }
+  };
 
   useEffect(() => {
+    setLiked(likedValue);
+
     setPlay(false);
 
     const options = formWaveSurferOptions(waveformRef.current);
@@ -85,9 +105,10 @@ export default function Waveform({
             )}
           </button>
           <div
-            onClick={() => toggleLike(likedValue, clickedId)}
-            // className="waveform__like-icon"
-            className={likedValue === 1 ? "waveform__like-icon active" : "waveform__like-icon"}
+            onClick={() => toggleClass(likedValue, clickedId)}
+            className={
+              liked ? "waveform__like-icon active" : "waveform__like-icon"
+            }
           ></div>
         </div>
         <input
