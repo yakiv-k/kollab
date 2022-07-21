@@ -1,7 +1,7 @@
-const tracksData = require("../seed_data/tracks");
+const stemsData = require("../seed_data/stems");
 
 exports.seed = function (knex) {
-  return knex("tracks")
+  return knex("stems")
     .del()
-    .then(() => knex("tracks").insert(tracksData));
+    .then(() => knex("stems").insert(stemsData));
 };
