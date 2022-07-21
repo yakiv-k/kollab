@@ -70,5 +70,11 @@ module.exports = [
   name: "Bassline.wav",
   tracks_id: "1",
   files: "https://kollab-data.s3.ca-central-1.amazonaws.com/LAXCITY_melody_loop_tranquil_100_C%23%2B-%2BPart_1+(3).wav"
- },
+ }, 
+ {
+  id: "13",
+  name: "BVocal-chop.wav",
+  tracks_id: "1",
+  files: "https://kollab-data.s3.ca-central-1.amazonaws.com/LAXCITY_melody_loop_tranquil_100_C%23%2B-%2BPart_1+(3).wav"
+ }
 ];

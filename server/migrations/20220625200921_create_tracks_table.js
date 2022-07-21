@@ -3,8 +3,6 @@ exports.up = function (knex) {
     table.string("id").primary();
     table
       .string("producer_id")
-      .unsigned()
-      .notNullable()
       .references("id")
       .inTable("producers")
       .onUpdate("CASCADE")

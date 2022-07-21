@@ -39,5 +39,4 @@ module.exports = [
     username: "yakiv.yyz@gmail.com",
     password: "password",
   }
-
 ];
