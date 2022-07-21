@@ -93,9 +93,10 @@ class HomePage extends Component {
     if (!isLoggedIn) return this.renderLogin();
 
     if (isSignedUp && isLoggedIn) {
-      setTimeout(() => {
-        this.props.history.push("/tracks");
-      }, 2000);
+      this.props.history.push("/tracks");
+      // setTimeout(() => {
+      //   this.props.history.push("/tracks");
+      // }, 2000);
     }
 
     return <></>;
