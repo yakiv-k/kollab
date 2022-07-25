@@ -11,7 +11,7 @@ module.exports = {
   },
   production: {
     client: "mysql",
-    connection: process.env.CLEARDB_DATABASE_URL,
+    connection: process.env.JAWSDB_URL,
     migrations: {
       directory: __dirname +  "./migrations",
     },
