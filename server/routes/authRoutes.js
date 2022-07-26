@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const knex = require("knex")(require("../knexfile").development);
+const knex = require("knex")(require("../knexfile"));
 const SECRET_KEY = process.env.SECRET_KEY;
 const { v4: uuidv4 } = require("uuid");
 
