@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const knex = require("knex")(require("../knexfile").development);
 
+require("dotenv").config();
+
 router.use(express.json());
 
 router.route("/producers/:id").get((req, res) => {
