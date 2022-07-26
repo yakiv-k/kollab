@@ -4,8 +4,6 @@ import play from "../../assets/icons/play.svg";
 import pause from "../../assets/icons/pause.svg";
 import axios from "axios";
 
-// import likeIcon from "../../assets/icons/heart.svg";
-
 import "./Waveform.scss";
 
 const formWaveSurferOptions = (ref) => ({

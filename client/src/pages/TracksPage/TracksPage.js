@@ -23,36 +23,15 @@ class TracksPage extends Component {
         });
       });
   }
-
-  // handleLike = (liked, idValue) => {
-  //   let likedBool = "";
-
-  //   if (liked === 1) {
-  //     likedBool = 0;
-  //     // this.setState({
-  //     //   activeClass: "waveform__like-icon",
-  //     // });
-  //   } else if (liked === 0) {
-  //     likedBool = 1;
-  //     // this.setState({
-  //     //   activeClass: "waveform__like-icon active",
-  //     // });
-  //   }
-
-  //   axios.patch("http://localhost:8080/tracks", {
-  //     liked: likedBool,
-  //     id: idValue,
-  //   });
-  // };
-
+  
   render() {
     return (
       <>
         <Header />
         <section className="tracks">
           <TracksFeed
-            // toggleLike={this.handleLike}
-            // tracksList={this.state.tracks}
+            toggleLike={this.handleLike}
+            tracksList={this.state.tracks}
           />
         </section>
       </>
