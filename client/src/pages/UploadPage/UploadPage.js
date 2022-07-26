@@ -62,7 +62,7 @@ class UploadPage extends Component {
 
     axios
       .post(
-        "http://localhost:8080/tracks",
+        "https://kollab-wav.herokuapp.com/tracks",
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },

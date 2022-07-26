@@ -4,8 +4,8 @@ import { Component } from "react";
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
 
-const loginUrl = `http://localhost:8080/login`;
-const signupUrl = `http://localhost:8080/signup`;
+const loginUrl = `https://kollab-wav.herokuapp.com/login`;
+const signupUrl = `https://kollab-wav.herokuapp.com/signup`;
 
 class HomePage extends Component {
   state = {

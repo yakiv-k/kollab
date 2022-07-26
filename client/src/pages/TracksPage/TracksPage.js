@@ -14,7 +14,7 @@ class TracksPage extends Component {
     const token = sessionStorage.getItem("token");
 
     axios
-      .get("http://localhost:8080/tracks", {
+      .get("https://kollab-wav.herokuapp.com/tracks", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -51,8 +51,8 @@ class TracksPage extends Component {
         <Header />
         <section className="tracks">
           <TracksFeed
-            toggleLike={this.handleLike}
-            tracksList={this.state.tracks}
+            // toggleLike={this.handleLike}
+            // tracksList={this.state.tracks}
           />
         </section>
       </>
