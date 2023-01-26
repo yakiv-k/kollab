@@ -15,7 +15,7 @@ class ProfilePage extends Component {
     const token = sessionStorage.getItem("token");
 
     axios
-      .get("https://kollab-wav.herokuapp.com/profile", {
+      .get("http://localhost:8080/profile", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

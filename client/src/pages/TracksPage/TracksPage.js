@@ -14,7 +14,7 @@ class TracksPage extends Component {
     const token = sessionStorage.getItem("token");
 
     axios
-      .get("https://kollab-wav.herokuapp.com/tracks", {
+      .get("http://localhost:8080/tracks", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

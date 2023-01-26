@@ -14,7 +14,7 @@ class ProducerPage extends Component {
   producer_id = this.props.match.params.id;
 
   componentDidMount() {
-    axios.get(`https://kollab-wav.herokuapp.com/producers/${this.producer_id}`).then((response) => {
+    axios.get(`http://localhost:8080/producers/${this.producer_id}`).then((response) => {
       this.setState({
         selectedProducer: response.data.producer,
         selectedProducerTracks: response.data.tracks

@@ -26,7 +26,7 @@ function TracksView(props) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://kollab-wav.herokuapp.com/tracks/${track_id}`
+          `http://localhost:8080/tracks/${track_id}`
         );
         setSelectedTrack(response.data.track);
         setSelectedTrackStems(response.data.stems);
