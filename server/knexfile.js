@@ -12,7 +12,7 @@ const connections = {
   },
   production: {
     client: "mysql",
-    connection: process.env.JAWSDB_URL,
+    connection: process.env.RAILWAYDB_URL,
     migrations: {
       directory: "./migrations",
     },
