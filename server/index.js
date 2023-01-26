@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
-// const db = require("./seed_data");
+const mysql = require("mysql");
 
 const producerRoutes = require("./routes/producerRoutes");
 const tracksRoutes = require("./routes/tracksRoutes");
@@ -29,15 +29,3 @@ app.use("/", profileRoutes);
 app.listen(PORT, () => {
   console.log("Server listening to http://localhost:" + PORT);
 });
-
-
-// db.sequelize
-//   .sync()
-//   .then(() => {
-//     app.listen(PORT || 8080, () => {
-//       console.log("Server listening to http://localhost:" + PORT);
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
