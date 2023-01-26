@@ -14,7 +14,7 @@ class TracksPage extends Component {
     const token = sessionStorage.getItem("token");
 
     axios
-      .get("http://localhost:8080/tracks", {
+      .get("https://kollab-production.up.railway.app/tracks", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

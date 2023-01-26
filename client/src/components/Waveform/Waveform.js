@@ -36,7 +36,7 @@ export default function Waveform({ url, toggleLike, clickedId, likedValue }) {
       likedBool = 0;
       setLiked(!liked);
 
-      axios.patch("http://localhost:8080/tracks", {
+      axios.patch("https://kollab-production.up.railway.app/tracks", {
         liked: likedBool,
         id: idValue,
       });
@@ -44,7 +44,7 @@ export default function Waveform({ url, toggleLike, clickedId, likedValue }) {
       likedBool = 1;
       setLiked(!liked);
 
-      axios.patch("http://localhost:8080/tracks", {
+      axios.patch("https://kollab-production.up.railway.app/tracks", {
         liked: likedBool,
         id: idValue,
       });

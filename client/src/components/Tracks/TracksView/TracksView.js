@@ -26,7 +26,7 @@ function TracksView(props) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/tracks/${track_id}`
+          `https://kollab-production.up.railway.app/${track_id}`
         );
         setSelectedTrack(response.data.track);
         setSelectedTrackStems(response.data.stems);

@@ -15,7 +15,7 @@ class ProfilePage extends Component {
     const token = sessionStorage.getItem("token");
 
     axios
-      .get("http://localhost:8080/profile", {
+      .get("https://kollab-production.up.railway.app/profile", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
