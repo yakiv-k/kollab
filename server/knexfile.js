@@ -1,47 +1,29 @@
-// Update with your config settings.
+require("dotenv").config();
 
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
-module.exports = {
-
+const connections = {
   development: {
-    client: 'sqlite3',
+    client: "mysql",
     connection: {
-      filename: './dev.sqlite3'
-    }
-  },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: "kollab",
     },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
   },
-
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    client: "mysql",
+    connection: process.env.RAILWAYDB_URL,
     migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
+      directory: "./migrations",
+    },
+    seeds: {
+      directory: "./seeds",
+    },
+    useNullAsDefault: true,
+  },
 };
+
+module.exports =
+  process.env.NODE_ENV === "production"
+    ? connections.production
+    : connections.development;
