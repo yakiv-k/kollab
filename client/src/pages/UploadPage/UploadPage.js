@@ -62,7 +62,7 @@ class UploadPage extends Component {
 
     axios
       .post(
-        "https://kollab-production.up.railway.app/tracks",
+        "https://web-production-5250.up.railway.app/tracks",
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },

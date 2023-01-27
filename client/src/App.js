@@ -9,8 +9,8 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 import "./styles/App.scss";
 
-const authUrl1 = "https://kollab-production.up.railway.app";
-const authUrl2 = "https://kollab-production.up.railway.app/";
+const authUrl1 = "https://web-production-5250.up.railway.app";
+const authUrl2 = "https://web-production-5250.up.railway.app/";
 
 function App() {
   return (
