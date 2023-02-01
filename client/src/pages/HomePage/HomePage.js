@@ -3,8 +3,8 @@ import { Component } from "react";
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
 
-const loginUrl = `https://kollab-production.up.railway.app/login`;
-const signupUrl = `https://kollab-production.up.railway.app/signup`;
+const loginUrl = `https://web-production-5250.up.railway.app/login`;
+const signupUrl = `https://web-production-5250.up.railway.app/signup`;
 
 class HomePage extends Component {
   state = {
